@@ -58,7 +58,7 @@ Django Messaging is a comprehensive messaging solution for Django applications t
 
 ## Benefits
 
-- **Save Development Time**: Saves at least 2.5 weeks of development work
+- **Save Development Time**: Saves at least 2.5 weeks of AI-powered development work
 - **Highly Flexible**: All functionality can be extended, overwritten, or replaced
 - **Easy Integration**: Simple setup with minimal configuration required
 - **Beautiful UI**: Pretty default styling with light and dark modes
