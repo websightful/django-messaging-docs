@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Aidas Bendoraitis a.k.a. archatas / DjangoTricks">
+        <link rel="canonical" href="https://websightful.github.io/django-messaging-docs/reference/settings/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Settings - Django Messaging</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../css/style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Django Messaging</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Getting Started</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../getting-started/installation/" class="dropdown-item">Installation</a>
+</li>
+                                    
+<li>
+    <a href="../../getting-started/quick-start/" class="dropdown-item">Quick Start</a>
+</li>
+                                    
+<li>
+    <a href="../../getting-started/configuration/" class="dropdown-item">Configuration</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">User Guides</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../guides/websocket-setup/" class="dropdown-item">WebSocket Setup</a>
+</li>
+                                    
+<li>
+    <a href="../../guides/polling-setup/" class="dropdown-item">Polling Setup</a>
+</li>
+                                    
+<li>
+    <a href="../../guides/customization/" class="dropdown-item">Customization</a>
+</li>
+                                    
+<li>
+    <a href="../../guides/embedding-widgets/" class="dropdown-item">Embedding Widgets</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../api/" class="dropdown-item">API Endpoints</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../template-tags/" class="dropdown-item">Template Tags</a>
+</li>
+                                    
+<li>
+    <a href="../models/" class="dropdown-item">Models</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">About</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../faq/" class="dropdown-item">FAQ</a>
+</li>
+                                    
+<li>
+    <a href="../../changelog/" class="dropdown-item">Changelog</a>
+</li>
+                                    
+<li>
+    <a href="../../contributing/" class="dropdown-item">Contributing</a>
+</li>
+                                    
+<li>
+    <a href="../../license/" class="dropdown-item">License</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../api/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../template-tags/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://websightful.gumroad.com/l/django-messaging" class="nav-link">Buy Now!</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#settings-reference" class="nav-link">Settings Reference</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#configuration-dictionary" class="nav-link">Configuration Dictionary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#transport-settings" class="nav-link">Transport Settings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#pagination-settings" class="nav-link">Pagination Settings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#layout-settings" class="nav-link">Layout Settings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#feature-toggles" class="nav-link">Feature Toggles</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#permission-settings" class="nav-link">Permission Settings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#customizable-functions" class="nav-link">Customizable Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#complete-example" class="nav-link">Complete Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#context-processor" class="nav-link">Context Processor</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#next-steps" class="nav-link">Next Steps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="settings-reference">Settings Reference<a class="headerlink" href="#settings-reference" title="Permanent link">&para;</a></h1>
+<p>Complete reference for all Django Messaging configuration options.</p>
+<h2 id="configuration-dictionary">Configuration Dictionary<a class="headerlink" href="#configuration-dictionary" title="Permanent link">&para;</a></h2>
+<p>All settings are configured through the <code>DJANGO_MESSAGING</code> dictionary in your <code>settings.py</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="c1"># Your settings here</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="transport-settings">Transport Settings<a class="headerlink" href="#transport-settings" title="Permanent link">&para;</a></h2>
+<h3 id="transport">TRANSPORT<a class="headerlink" href="#transport" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>str</code><br />
+<strong>Default</strong>: <code>"websocket"</code><br />
+<strong>Options</strong>: <code>"websocket"</code>, <code>"polling"</code></p>
+<p>Determines the transport mechanism for message delivery.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="s2">&quot;TRANSPORT&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong><code>"websocket"</code></strong>: Real-time message delivery using WebSocket. Requires Django Channels and Redis.</li>
+<li><strong><code>"polling"</code></strong>: HTTP polling for message delivery. Simpler setup, no Redis required.</li>
+</ul>
+<p><strong>See also</strong>: <a href="../../guides/websocket-setup/">WebSocket Setup</a>, <a href="../../guides/polling-setup/">Polling Setup</a></p>
+<h2 id="pagination-settings">Pagination Settings<a class="headerlink" href="#pagination-settings" title="Permanent link">&para;</a></h2>
+<h3 id="messages_per_page">MESSAGES_PER_PAGE<a class="headerlink" href="#messages_per_page" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>int</code><br />
+<strong>Default</strong>: <code>50</code><br />
+<strong>Range</strong>: <code>1</code> to <code>100</code> (recommended)</p>
+<p>Number of messages to load per page.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s2">&quot;MESSAGES_PER_PAGE&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>Higher values load more messages at once but may impact performance.</p>
+<h3 id="chats_per_page">CHATS_PER_PAGE<a class="headerlink" href="#chats_per_page" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>int</code><br />
+<strong>Default</strong>: <code>10</code><br />
+<strong>Range</strong>: <code>1</code> to <code>50</code> (recommended)</p>
+<p>Number of chats to display per page in the chat list.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="s2">&quot;CHATS_PER_PAGE&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="layout-settings">Layout Settings<a class="headerlink" href="#layout-settings" title="Permanent link">&para;</a></h2>
+<h3 id="top_navigation_height">TOP_NAVIGATION_HEIGHT<a class="headerlink" href="#top_navigation_height" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>str</code> (CSS value)<br />
+<strong>Default</strong>: <code>"64px"</code></p>
+<p>Height of your site's top navigation bar.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s2">&quot;TOP_NAVIGATION_HEIGHT&quot;</span><span class="p">:</span> <span class="s2">&quot;64px&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>Used to calculate the correct positioning of the messaging interface.</p>
+<h3 id="content_top_offset">CONTENT_TOP_OFFSET<a class="headerlink" href="#content_top_offset" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>str</code> (CSS value)<br />
+<strong>Default</strong>: <code>"96px"</code></p>
+<p>Total offset from the viewport top, including navigation height and margins.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="s2">&quot;CONTENT_TOP_OFFSET&quot;</span><span class="p">:</span> <span class="s2">&quot;96px&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>Should be <code>TOP_NAVIGATION_HEIGHT</code> plus any additional top margins.</p>
+<h3 id="content_bottom_offset">CONTENT_BOTTOM_OFFSET<a class="headerlink" href="#content_bottom_offset" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>str</code> (CSS value)<br />
+<strong>Default</strong>: <code>"32px"</code></p>
+<p>Bottom padding/margins for the messaging interface.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="s2">&quot;CONTENT_BOTTOM_OFFSET&quot;</span><span class="p">:</span> <span class="s2">&quot;32px&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="feature-toggles">Feature Toggles<a class="headerlink" href="#feature-toggles" title="Permanent link">&para;</a></h2>
+<h3 id="show_deleted_message_indicators">SHOW_DELETED_MESSAGE_INDICATORS<a class="headerlink" href="#show_deleted_message_indicators" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>bool</code><br />
+<strong>Default</strong>: <code>False</code></p>
+<p>Show or hide indicators for deleted messages.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="s2">&quot;SHOW_DELETED_MESSAGE_INDICATORS&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong><code>True</code></strong>: Deleted messages show as "This message was deleted"</li>
+<li><strong><code>False</code></strong>: Deleted messages are completely removed from view</li>
+</ul>
+<h3 id="enable_chat_rooms">ENABLE_CHAT_ROOMS<a class="headerlink" href="#enable_chat_rooms" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>bool</code><br />
+<strong>Default</strong>: <code>True</code></p>
+<p>Enable or disable embedded chat room functionality.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="s2">&quot;ENABLE_CHAT_ROOMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>When disabled, the room widget will not be available.</p>
+<h3 id="enable_dms">ENABLE_DMS<a class="headerlink" href="#enable_dms" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>bool</code><br />
+<strong>Default</strong>: <code>True</code></p>
+<p>Enable or disable embedded DM widget functionality.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="s2">&quot;ENABLE_DMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>When disabled, the DM widget will not be available.</p>
+<h3 id="show_chat_rooms_in_messages">SHOW_CHAT_ROOMS_IN_MESSAGES<a class="headerlink" href="#show_chat_rooms_in_messages" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>bool</code><br />
+<strong>Default</strong>: <code>True</code></p>
+<p>Show or hide chat rooms in the main messages page chat list.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="s2">&quot;SHOW_CHAT_ROOMS_IN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>Useful if you want rooms to be accessible only through embedded widgets.</p>
+<h3 id="show_dms_in_messages">SHOW_DMS_IN_MESSAGES<a class="headerlink" href="#show_dms_in_messages" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>bool</code><br />
+<strong>Default</strong>: <code>True</code></p>
+<p>Show or hide DMs in the main messages page chat list.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="s2">&quot;SHOW_DMS_IN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>Useful if you want DMs to be accessible only through embedded widgets.</p>
+<h2 id="permission-settings">Permission Settings<a class="headerlink" href="#permission-settings" title="Permanent link">&para;</a></h2>
+<h3 id="allow_renaming_chat_rooms">ALLOW_RENAMING_CHAT_ROOMS<a class="headerlink" href="#allow_renaming_chat_rooms" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>bool</code><br />
+<strong>Default</strong>: <code>True</code></p>
+<p>Allow users to rename chat rooms.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="s2">&quot;ALLOW_RENAMING_CHAT_ROOMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="allow_renaming_dms">ALLOW_RENAMING_DMS<a class="headerlink" href="#allow_renaming_dms" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>bool</code><br />
+<strong>Default</strong>: <code>True</code></p>
+<p>Allow users to rename direct message chats.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="s2">&quot;ALLOW_RENAMING_DMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="allow_editing_own_messages">ALLOW_EDITING_OWN_MESSAGES<a class="headerlink" href="#allow_editing_own_messages" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>bool</code><br />
+<strong>Default</strong>: <code>True</code></p>
+<p>Allow users to edit their own messages.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="s2">&quot;ALLOW_EDITING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>When disabled, the edit option will not appear in message context menus.</p>
+<h3 id="allow_deleting_own_messages">ALLOW_DELETING_OWN_MESSAGES<a class="headerlink" href="#allow_deleting_own_messages" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>bool</code><br />
+<strong>Default</strong>: <code>True</code></p>
+<p>Allow users to delete their own messages.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="s2">&quot;ALLOW_DELETING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>When disabled, the delete option will not appear in message context menus.</p>
+<h3 id="allow_adding_reactions">ALLOW_ADDING_REACTIONS<a class="headerlink" href="#allow_adding_reactions" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>bool</code><br />
+<strong>Default</strong>: <code>True</code></p>
+<p>Allow users to add emoji reactions to messages.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="s2">&quot;ALLOW_ADDING_REACTIONS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>When disabled, the reaction button will not appear on messages.</p>
+<h2 id="customizable-functions">Customizable Functions<a class="headerlink" href="#customizable-functions" title="Permanent link">&para;</a></h2>
+<h3 id="get_contact_list_function">GET_CONTACT_LIST_FUNCTION<a class="headerlink" href="#get_contact_list_function" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>str</code> (dotted path to function)<br />
+<strong>Default</strong>: <code>"django_messaging.defaults.get_contact_list"</code></p>
+<p>Function that returns a queryset of users for the contact list.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="s2">&quot;GET_CONTACT_LIST_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;myapp.utils.get_contact_list&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Function signature</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_contact_list</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="sd">    Return a queryset of users that the given user can message.</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="sd">    Args:</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="sd">        user: The current user</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="sd">        QuerySet of User objects</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="k">return</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">is_active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Default behavior</strong>: Returns all active users except the current user.</p>
+<h3 id="get_user_name_function">GET_USER_NAME_FUNCTION<a class="headerlink" href="#get_user_name_function" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>str</code> (dotted path to function)<br />
+<strong>Default</strong>: <code>"django_messaging.defaults.get_user_name"</code></p>
+<p>Function that returns the display name for a user.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="s2">&quot;GET_USER_NAME_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;myapp.utils.get_user_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Function signature</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_user_name</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="sd">    Return the display name for a user.</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="sd">    Args:</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="sd">        user: User object</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="sd">        str: Display name</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">get_full_name</span><span class="p">()</span> <span class="ow">or</span> <span class="n">user</span><span class="o">.</span><span class="n">username</span>
+</code></pre></div>
+<p><strong>Default behavior</strong>: Returns full name if available, otherwise username.</p>
+<h3 id="get_user_avatar_url_function">GET_USER_AVATAR_URL_FUNCTION<a class="headerlink" href="#get_user_avatar_url_function" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>str</code> (dotted path to function)<br />
+<strong>Default</strong>: <code>"django_messaging.defaults.get_user_avatar_url"</code></p>
+<p>Function that returns the avatar URL for a user.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="s2">&quot;GET_USER_AVATAR_URL_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;myapp.utils.get_user_avatar_url&quot;</span><span class="p">,</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Function signature</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_user_avatar_url</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="sd">    Return the avatar URL for a user.</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="sd">    Args:</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="sd">        user: User object</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="sd">        str: Avatar URL (can be a data URL or regular URL)</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>    <span class="c1"># Return SVG data URL with user initials</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>    <span class="k">return</span> <span class="s2">&quot;data:image/svg+xml,...&quot;</span>
+</code></pre></div>
+<p><strong>Default behavior</strong>: Generates an SVG data URL with user initials and a consistent color based on the user's ID.</p>
+<h2 id="complete-example">Complete Example<a class="headerlink" href="#complete-example" title="Permanent link">&para;</a></h2>
+<p>Here's a complete configuration example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="c1"># Transport</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="s2">&quot;TRANSPORT&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="c1"># Pagination</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="s2">&quot;MESSAGES_PER_PAGE&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="s2">&quot;CHATS_PER_PAGE&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="c1"># Layout</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>    <span class="s2">&quot;TOP_NAVIGATION_HEIGHT&quot;</span><span class="p">:</span> <span class="s2">&quot;64px&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    <span class="s2">&quot;CONTENT_TOP_OFFSET&quot;</span><span class="p">:</span> <span class="s2">&quot;96px&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>    <span class="s2">&quot;CONTENT_BOTTOM_OFFSET&quot;</span><span class="p">:</span> <span class="s2">&quot;32px&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    <span class="c1"># Features</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    <span class="s2">&quot;SHOW_DELETED_MESSAGE_INDICATORS&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>    <span class="s2">&quot;ENABLE_CHAT_ROOMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>    <span class="s2">&quot;ENABLE_DMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>    <span class="s2">&quot;SHOW_CHAT_ROOMS_IN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>    <span class="s2">&quot;SHOW_DMS_IN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>    <span class="c1"># Permissions</span>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>    <span class="s2">&quot;ALLOW_RENAMING_CHAT_ROOMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>    <span class="s2">&quot;ALLOW_RENAMING_DMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>    <span class="s2">&quot;ALLOW_EDITING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>    <span class="s2">&quot;ALLOW_DELETING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>    <span class="s2">&quot;ALLOW_ADDING_REACTIONS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>
+<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>    <span class="c1"># Customization</span>
+<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>    <span class="s2">&quot;GET_CONTACT_LIST_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_contact_list&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>    <span class="s2">&quot;GET_USER_NAME_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_user_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>    <span class="s2">&quot;GET_USER_AVATAR_URL_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_user_avatar_url&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="context-processor">Context Processor<a class="headerlink" href="#context-processor" title="Permanent link">&para;</a></h2>
+<p>Don't forget to add the context processor to make settings available in templates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="p">{</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>        <span class="s2">&quot;BACKEND&quot;</span><span class="p">:</span> <span class="s2">&quot;django.template.backends.django.DjangoTemplates&quot;</span><span class="p">,</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>        <span class="s2">&quot;OPTIONS&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>            <span class="s2">&quot;context_processors&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>                <span class="c1"># ...</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>                <span class="s2">&quot;django_messaging.context_processors.messaging_settings&quot;</span><span class="p">,</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>            <span class="p">],</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>        <span class="p">},</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>    <span class="p">},</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="p">]</span>
+</code></pre></div>
+<p>This makes <code>MESSAGING_SETTINGS</code> available in all templates.</p>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Learn about <a href="../../guides/customization/">Customization</a></li>
+<li>Explore the <a href="../api/">API Reference</a></li>
+<li>Check <a href="../template-tags/">Template Tags</a></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Aidas Bendoraitis a.k.a. archatas / DjangoTricks">
+        <link rel="canonical" href="https://websightful.github.io/django-messaging-docs/faq/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>FAQ - Django Messaging</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../css/style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Django Messaging</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Getting Started</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../getting-started/installation/" class="dropdown-item">Installation</a>
+</li>
+                                    
+<li>
+    <a href="../getting-started/quick-start/" class="dropdown-item">Quick Start</a>
+</li>
+                                    
+<li>
+    <a href="../getting-started/configuration/" class="dropdown-item">Configuration</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">User Guides</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../guides/websocket-setup/" class="dropdown-item">WebSocket Setup</a>
+</li>
+                                    
+<li>
+    <a href="../guides/polling-setup/" class="dropdown-item">Polling Setup</a>
+</li>
+                                    
+<li>
+    <a href="../guides/customization/" class="dropdown-item">Customization</a>
+</li>
+                                    
+<li>
+    <a href="../guides/embedding-widgets/" class="dropdown-item">Embedding Widgets</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../reference/api/" class="dropdown-item">API Endpoints</a>
+</li>
+                                    
+<li>
+    <a href="../reference/settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../reference/template-tags/" class="dropdown-item">Template Tags</a>
+</li>
+                                    
+<li>
+    <a href="../reference/models/" class="dropdown-item">Models</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">About</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">FAQ</a>
+</li>
+                                    
+<li>
+    <a href="../changelog/" class="dropdown-item">Changelog</a>
+</li>
+                                    
+<li>
+    <a href="../contributing/" class="dropdown-item">Contributing</a>
+</li>
+                                    
+<li>
+    <a href="../license/" class="dropdown-item">License</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../reference/models/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../changelog/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://websightful.gumroad.com/l/django-messaging" class="nav-link">Buy Now!</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#frequently-asked-questions" class="nav-link">Frequently Asked Questions</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#general-questions" class="nav-link">General Questions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#installation-setup" class="nav-link">Installation &amp; Setup</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#features" class="nav-link">Features</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#customization" class="nav-link">Customization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#deployment" class="nav-link">Deployment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#performance" class="nav-link">Performance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#troubleshooting" class="nav-link">Troubleshooting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#integration" class="nav-link">Integration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#internationalization" class="nav-link">Internationalization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#support" class="nav-link">Support</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#upgrading" class="nav-link">Upgrading</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#still-have-questions" class="nav-link">Still Have Questions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h1>
+<h2 id="general-questions">General Questions<a class="headerlink" href="#general-questions" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-django-messaging">What is Django Messaging?<a class="headerlink" href="#what-is-django-messaging" title="Permanent link">&para;</a></h3>
+<p>Django Messaging is a lightweight, extensible Django app for private messaging. It provides real-time messaging, group chats, and embeddable chat widgets that can be easily integrated into any Django project.</p>
+<h3 id="is-django-messaging-free">Is Django Messaging free?<a class="headerlink" href="#is-django-messaging-free" title="Permanent link">&para;</a></h3>
+<p>Django Messaging is a commercial product available for purchase from <a href="https://websightful.gumroad.com/l/django-messaging">Gumroad</a>. It's a one-time payment with no recurring subscriptions or domain limitations.</p>
+<h3 id="what-license-does-django-messaging-use">What license does Django Messaging use?<a class="headerlink" href="#what-license-does-django-messaging-use" title="Permanent link">&para;</a></h3>
+<p>Django Messaging is released under the MIT License, which allows you to use it in commercial projects, modify it, and distribute it.</p>
+<h3 id="can-i-use-django-messaging-on-multiple-websites">Can I use Django Messaging on multiple websites?<a class="headerlink" href="#can-i-use-django-messaging-on-multiple-websites" title="Permanent link">&para;</a></h3>
+<p>Yes! There are no domain limitations. You can use Django Messaging on as many websites as you need.</p>
+<h2 id="installation-setup">Installation &amp; Setup<a class="headerlink" href="#installation-setup" title="Permanent link">&para;</a></h2>
+<h3 id="what-are-the-requirements">What are the requirements?<a class="headerlink" href="#what-are-the-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Python 3.8 or higher</li>
+<li>Django 4.2 or higher</li>
+<li>Django REST Framework</li>
+</ul>
+<p>For WebSocket support:</p>
+<ul>
+<li>Django Channels 4.0+</li>
+<li>channels-redis 4.0+</li>
+<li>Redis server</li>
+<li>Daphne 4.0+ or Uvicorn 0.20+</li>
+</ul>
+<h3 id="do-i-need-redis">Do I need Redis?<a class="headerlink" href="#do-i-need-redis" title="Permanent link">&para;</a></h3>
+<p>Redis is only required if you want to use WebSocket transport for real-time messaging. If you use polling transport, Redis is not needed.</p>
+<h3 id="can-i-use-django-messaging-with-my-existing-django-project">Can I use Django Messaging with my existing Django project?<a class="headerlink" href="#can-i-use-django-messaging-with-my-existing-django-project" title="Permanent link">&para;</a></h3>
+<p>Yes! Django Messaging is designed to integrate seamlessly with existing Django projects. Just follow the <a href="../getting-started/installation/">Installation Guide</a>.</p>
+<h3 id="does-django-messaging-work-with-custom-user-models">Does Django Messaging work with custom user models?<a class="headerlink" href="#does-django-messaging-work-with-custom-user-models" title="Permanent link">&para;</a></h3>
+<p>Yes, Django Messaging fully supports custom user models configured via the <code>AUTH_USER_MODEL</code> setting.</p>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<h3 id="whats-the-difference-between-websocket-and-polling">What's the difference between WebSocket and polling?<a class="headerlink" href="#whats-the-difference-between-websocket-and-polling" title="Permanent link">&para;</a></h3>
+<p><strong>WebSocket</strong>:</p>
+<ul>
+<li>Real-time, instant message delivery</li>
+<li>Requires Redis and Django Channels</li>
+<li>More complex setup</li>
+<li>Better for high-traffic sites</li>
+</ul>
+<p><strong>Polling</strong>:</p>
+<ul>
+<li>Near real-time (3-second delay)</li>
+<li>No Redis required</li>
+<li>Simple setup</li>
+<li>Better for small to medium sites</li>
+</ul>
+<p>See <a href="../guides/websocket-setup/">WebSocket Setup</a> and <a href="../guides/polling-setup/">Polling Setup</a> for details.</p>
+<h3 id="can-users-edit-or-delete-messages">Can users edit or delete messages?<a class="headerlink" href="#can-users-edit-or-delete-messages" title="Permanent link">&para;</a></h3>
+<p>Yes, users can edit and delete their own messages. These features can be disabled in settings:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">&quot;ALLOW_EDITING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">&quot;ALLOW_DELETING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="does-django-messaging-support-emoji-reactions">Does Django Messaging support emoji reactions?<a class="headerlink" href="#does-django-messaging-support-emoji-reactions" title="Permanent link">&para;</a></h3>
+<p>Yes! Users can react to messages with emojis. This feature can be disabled:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="s2">&quot;ALLOW_ADDING_REACTIONS&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="can-i-create-group-chats">Can I create group chats?<a class="headerlink" href="#can-i-create-group-chats" title="Permanent link">&para;</a></h3>
+<p>Yes, Django Messaging supports:</p>
+<ul>
+<li>Direct messages (1-on-1)</li>
+<li>Group chats (multiple users)</li>
+<li>Chat rooms (attached to content objects)</li>
+</ul>
+<h3 id="does-it-support-read-receipts">Does it support read receipts?<a class="headerlink" href="#does-it-support-read-receipts" title="Permanent link">&para;</a></h3>
+<p>Yes, Django Messaging tracks which users have read each message and displays read receipts.</p>
+<h3 id="are-there-typing-indicators">Are there typing indicators?<a class="headerlink" href="#are-there-typing-indicators" title="Permanent link">&para;</a></h3>
+<p>Yes, typing indicators show when other users are typing in a chat.</p>
+<h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h2>
+<h3 id="can-i-customize-the-appearance">Can I customize the appearance?<a class="headerlink" href="#can-i-customize-the-appearance" title="Permanent link">&para;</a></h3>
+<p>Yes! Django Messaging is highly customizable:</p>
+<ul>
+<li>Uses Tailwind CSS for easy styling</li>
+<li>Override Tailwind classes or add custom CSS</li>
+<li>Override templates for complete control</li>
+<li>Built-in dark mode support with Tailwind's <code>dark:</code> variant</li>
+</ul>
+<p>See the <a href="../guides/customization/">Customization Guide</a>.</p>
+<h3 id="can-i-control-who-can-message-whom">Can I control who can message whom?<a class="headerlink" href="#can-i-control-who-can-message-whom" title="Permanent link">&para;</a></h3>
+<p>Yes, you can customize the contact list function to control which users can message each other:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s2">&quot;GET_CONTACT_LIST_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;myapp.utils.get_contact_list&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>See <a href="../getting-started/configuration/#customizable-functions">Configuration</a>.</p>
+<h3 id="can-i-use-my-own-user-avatars">Can I use my own user avatars?<a class="headerlink" href="#can-i-use-my-own-user-avatars" title="Permanent link">&para;</a></h3>
+<p>Yes, customize the avatar function to use your own user profile images:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="s2">&quot;GET_USER_AVATAR_URL_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;myapp.utils.get_user_avatar_url&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="can-i-change-how-user-names-are-displayed">Can I change how user names are displayed?<a class="headerlink" href="#can-i-change-how-user-names-are-displayed" title="Permanent link">&para;</a></h3>
+<p>Yes, customize the user name function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s2">&quot;GET_USER_NAME_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;myapp.utils.get_user_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
+<h3 id="how-do-i-deploy-django-messaging-in-production">How do I deploy Django Messaging in production?<a class="headerlink" href="#how-do-i-deploy-django-messaging-in-production" title="Permanent link">&para;</a></h3>
+<p>For <strong>polling transport</strong>, use any standard WSGI server (Gunicorn, uWSGI, etc.).</p>
+<p>For <strong>WebSocket transport</strong>, use an ASGI server:</p>
+<ul>
+<li>Daphne</li>
+<li>Uvicorn</li>
+<li>Gunicorn with Uvicorn workers</li>
+</ul>
+<p>See <a href="../guides/websocket-setup/#production-deployment">WebSocket Setup</a>.</p>
+<h3 id="do-i-need-a-special-server-for-websocket">Do I need a special server for WebSocket?<a class="headerlink" href="#do-i-need-a-special-server-for-websocket" title="Permanent link">&para;</a></h3>
+<p>Yes, WebSocket requires an ASGI server. However, you can use polling transport with standard WSGI servers if you prefer.</p>
+<h3 id="can-i-use-django-messaging-on-shared-hosting">Can I use Django Messaging on shared hosting?<a class="headerlink" href="#can-i-use-django-messaging-on-shared-hosting" title="Permanent link">&para;</a></h3>
+<p>Yes, if you use polling transport. WebSocket may not be available on all shared hosting platforms.</p>
+<h3 id="how-do-i-handle-static-files">How do I handle static files?<a class="headerlink" href="#how-do-i-handle-static-files" title="Permanent link">&para;</a></h3>
+<p>Use Django's standard static file handling:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>collectstatic
+</code></pre></div>
+<p>Then serve static files with your web server (Nginx, Apache, etc.) or a CDN.</p>
+<h2 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h2>
+<h3 id="how-many-concurrent-users-can-django-messaging-handle">How many concurrent users can Django Messaging handle?<a class="headerlink" href="#how-many-concurrent-users-can-django-messaging-handle" title="Permanent link">&para;</a></h3>
+<p>This depends on your infrastructure and transport method:</p>
+<p><strong>Polling</strong>: Suitable for small to medium sites (&lt; 500 concurrent users)
+<strong>WebSocket</strong>: Can handle thousands of concurrent users with proper infrastructure</p>
+<h3 id="will-django-messaging-slow-down-my-site">Will Django Messaging slow down my site?<a class="headerlink" href="#will-django-messaging-slow-down-my-site" title="Permanent link">&para;</a></h3>
+<p>No, Django Messaging is designed to be lightweight and efficient:</p>
+<ul>
+<li>Lazy loading of messages</li>
+<li>Efficient database queries</li>
+<li>Pagination</li>
+<li>Optional caching</li>
+</ul>
+<h3 id="should-i-use-caching">Should I use caching?<a class="headerlink" href="#should-i-use-caching" title="Permanent link">&para;</a></h3>
+<p>Yes, consider caching for:</p>
+<ul>
+<li>User lists</li>
+<li>Chat metadata</li>
+<li>Frequently accessed data</li>
+</ul>
+<p>Use Django's caching framework with Redis or Memcached.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="messages-arent-appearing-in-real-time">Messages aren't appearing in real-time<a class="headerlink" href="#messages-arent-appearing-in-real-time" title="Permanent link">&para;</a></h3>
+<p><strong>For WebSocket</strong>:
+1. Verify Redis is running: <code>redis-cli ping</code>
+2. Check WebSocket connection in browser console
+3. Verify <code>TRANSPORT</code> is set to <code>"websocket"</code></p>
+<p><strong>For Polling</strong>:
+1. Check browser console for errors
+2. Verify API endpoints are accessible
+3. Check that polling is working (Network tab)</p>
+<h3 id="i-get-websocket-connection-failed">I get "WebSocket connection failed"<a class="headerlink" href="#i-get-websocket-connection-failed" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Verify Redis is running</li>
+<li>Check <code>CHANNEL_LAYERS</code> configuration</li>
+<li>Ensure <code>ASGI_APPLICATION</code> is set correctly</li>
+<li>Check that you're using an ASGI server (Daphne/Uvicorn)</li>
+</ol>
+<h3 id="static-files-arent-loading">Static files aren't loading<a class="headerlink" href="#static-files-arent-loading" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Run <code>python manage.py collectstatic</code></li>
+<li>Check <code>STATIC_URL</code> and <code>STATIC_ROOT</code> settings</li>
+<li>Verify web server is serving static files correctly</li>
+</ol>
+<h3 id="i-cant-see-the-messaging-interface">I can't see the messaging interface<a class="headerlink" href="#i-cant-see-the-messaging-interface" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Verify you're logged in</li>
+<li>Check that <code>django_messaging</code> is in <code>INSTALLED_APPS</code></li>
+<li>Verify URLs are configured correctly</li>
+<li>Check browser console for JavaScript errors</li>
+</ol>
+<h2 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h2>
+<h3 id="can-i-embed-chat-widgets-in-my-pages">Can I embed chat widgets in my pages?<a class="headerlink" href="#can-i-embed-chat-widgets-in-my-pages" title="Permanent link">&para;</a></h3>
+<p>Yes! Django Messaging provides two embeddable widgets:</p>
+<ul>
+<li>DM widget for user profiles</li>
+<li>Room widget for content objects</li>
+</ul>
+<p>See <a href="../guides/embedding-widgets/">Embedding Widgets</a>.</p>
+<h3 id="can-i-attach-chat-rooms-to-my-models">Can I attach chat rooms to my models?<a class="headerlink" href="#can-i-attach-chat-rooms-to-my-models" title="Permanent link">&para;</a></h3>
+<p>Yes, you can attach a chat room to any Django model instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;messaging/includes/room.html&quot;</span> <span class="k">with</span> <span class="nv">content_object</span><span class="o">=</span><span class="nv">my_object</span> <span class="cp">%}</span>
+</code></pre></div>
+<h3 id="does-django-messaging-have-an-api">Does Django Messaging have an API?<a class="headerlink" href="#does-django-messaging-have-an-api" title="Permanent link">&para;</a></h3>
+<p>Yes, Django Messaging provides a complete REST API for all messaging operations. See the <a href="../reference/api/">API Reference</a>.</p>
+<h3 id="can-i-use-django-messaging-with-reactvueangular">Can I use Django Messaging with React/Vue/Angular?<a class="headerlink" href="#can-i-use-django-messaging-with-reactvueangular" title="Permanent link">&para;</a></h3>
+<p>Yes, you can use the REST API to build your own frontend with any JavaScript framework.</p>
+<h2 id="internationalization">Internationalization<a class="headerlink" href="#internationalization" title="Permanent link">&para;</a></h2>
+<h3 id="is-django-messaging-translatable">Is Django Messaging translatable?<a class="headerlink" href="#is-django-messaging-translatable" title="Permanent link">&para;</a></h3>
+<p>Yes, Django Messaging is built with internationalization in mind. Use Django's standard translation workflow:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>makemessages<span class="w"> </span>-l<span class="w"> </span>es
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>compilemessages
+</code></pre></div>
+<h3 id="what-languages-are-supported">What languages are supported?<a class="headerlink" href="#what-languages-are-supported" title="Permanent link">&para;</a></h3>
+<p>Django Messaging includes English by default. You can add translations for any language using Django's translation system.</p>
+<h2 id="support">Support<a class="headerlink" href="#support" title="Permanent link">&para;</a></h2>
+<h3 id="where-can-i-get-help">Where can I get help?<a class="headerlink" href="#where-can-i-get-help" title="Permanent link">&para;</a></h3>
+<p>For technical questions, feature requests, or bug reports, contact Aidas Bendoraitis at <a href="https://www.djangotricks.com/feedback/">https://www.djangotricks.com/feedback/</a>.</p>
+<h3 id="is-there-a-community-forum">Is there a community forum?<a class="headerlink" href="#is-there-a-community-forum" title="Permanent link">&para;</a></h3>
+<p>Currently, support is provided directly by the developer. A community forum may be added in the future.</p>
+<h3 id="can-i-request-features">Can I request features?<a class="headerlink" href="#can-i-request-features" title="Permanent link">&para;</a></h3>
+<p>Yes! Feature requests are welcome. Contact the developer with your suggestions.</p>
+<h3 id="do-you-offer-custom-development">Do you offer custom development?<a class="headerlink" href="#do-you-offer-custom-development" title="Permanent link">&para;</a></h3>
+<p>Yes, custom development services may be available. Contact the developer to discuss your needs.</p>
+<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
+<h3 id="how-do-i-upgrade-to-a-new-version">How do I upgrade to a new version?<a class="headerlink" href="#how-do-i-upgrade-to-a-new-version" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Download the new wheel file</li>
+<li>Install it: <code>pip install django_messaging-0.17.0-py3-none-any.whl --upgrade</code></li>
+<li>Run migrations: <code>python manage.py migrate</code></li>
+<li>Collect static files: <code>python manage.py collectstatic</code></li>
+<li>Restart your server</li>
+</ol>
+<h3 id="will-upgrading-break-my-existing-chats">Will upgrading break my existing chats?<a class="headerlink" href="#will-upgrading-break-my-existing-chats" title="Permanent link">&para;</a></h3>
+<p>No, upgrades are designed to be backward compatible. Your existing chats and messages will be preserved.</p>
+<h3 id="where-can-i-see-whats-new">Where can I see what's new?<a class="headerlink" href="#where-can-i-see-whats-new" title="Permanent link">&para;</a></h3>
+<p>Check the <a href="../changelog/">Changelog</a> for a list of all changes in each version.</p>
+<h2 id="still-have-questions">Still Have Questions?<a class="headerlink" href="#still-have-questions" title="Permanent link">&para;</a></h2>
+<p>If your question isn't answered here, please contact Aidas Bendoraitis at <a href="https://www.djangotricks.com/feedback/">https://www.djangotricks.com/feedback/</a>.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

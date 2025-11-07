@@ -1,0 +1,47 @@
+site_name: Django Messaging
+site_url: https://websightful.github.io/django-messaging-docs/
+site_description: A lightweight, extensible Django app for private messaging, built for easy integration
+site_author: Aidas Bendoraitis a.k.a. archatas / DjangoTricks
+docs_dir: src
+site_dir: docs
+repo_url: https://websightful.gumroad.com/l/django-messaging
+repo_name: Buy Now!
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+extra_css:
+  - css/style.css
+
+nav:
+  - Home: 'index.md'
+  - Getting Started:
+      - Installation: 'getting-started/installation.md'
+      - Quick Start: 'getting-started/quick-start.md'
+      - Configuration: 'getting-started/configuration.md'
+  - User Guides:
+      - WebSocket Setup: 'guides/websocket-setup.md'
+      - Polling Setup: 'guides/polling-setup.md'
+      - Customization: 'guides/customization.md'
+      - Embedding Widgets: 'guides/embedding-widgets.md'
+  - Reference:
+      - API Endpoints: 'reference/api.md'
+      - Settings: 'reference/settings.md'
+      - Template Tags: 'reference/template-tags.md'
+      - Models: 'reference/models.md'
+  - About:
+      - FAQ: 'faq.md'
+      - Changelog: 'changelog.md'
+      - Contributing: 'contributing.md'
+      - License: 'license.md'

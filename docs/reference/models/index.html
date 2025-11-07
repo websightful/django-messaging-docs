@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Aidas Bendoraitis a.k.a. archatas / DjangoTricks">
+        <link rel="canonical" href="https://websightful.github.io/django-messaging-docs/reference/models/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Models - Django Messaging</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../css/style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Django Messaging</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Getting Started</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../getting-started/installation/" class="dropdown-item">Installation</a>
+</li>
+                                    
+<li>
+    <a href="../../getting-started/quick-start/" class="dropdown-item">Quick Start</a>
+</li>
+                                    
+<li>
+    <a href="../../getting-started/configuration/" class="dropdown-item">Configuration</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">User Guides</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../guides/websocket-setup/" class="dropdown-item">WebSocket Setup</a>
+</li>
+                                    
+<li>
+    <a href="../../guides/polling-setup/" class="dropdown-item">Polling Setup</a>
+</li>
+                                    
+<li>
+    <a href="../../guides/customization/" class="dropdown-item">Customization</a>
+</li>
+                                    
+<li>
+    <a href="../../guides/embedding-widgets/" class="dropdown-item">Embedding Widgets</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../api/" class="dropdown-item">API Endpoints</a>
+</li>
+                                    
+<li>
+    <a href="../settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../template-tags/" class="dropdown-item">Template Tags</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Models</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">About</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../faq/" class="dropdown-item">FAQ</a>
+</li>
+                                    
+<li>
+    <a href="../../changelog/" class="dropdown-item">Changelog</a>
+</li>
+                                    
+<li>
+    <a href="../../contributing/" class="dropdown-item">Contributing</a>
+</li>
+                                    
+<li>
+    <a href="../../license/" class="dropdown-item">License</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../template-tags/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../faq/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://websightful.gumroad.com/l/django-messaging" class="nav-link">Buy Now!</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#models-reference" class="nav-link">Models Reference</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#chatroom" class="nav-link">ChatRoom</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#chatmembership" class="nav-link">ChatMembership</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#message" class="nav-link">Message</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#messagereadreceipt" class="nav-link">MessageReadReceipt</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#messagereaction" class="nav-link">MessageReaction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#database-schema" class="nav-link">Database Schema</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#next-steps" class="nav-link">Next Steps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="models-reference">Models Reference<a class="headerlink" href="#models-reference" title="Permanent link">&para;</a></h1>
+<p>Django Messaging uses several models to store messaging data. This reference covers the main models and their fields.</p>
+<h2 id="chatroom">ChatRoom<a class="headerlink" href="#chatroom" title="Permanent link">&para;</a></h2>
+<p>The <code>ChatRoom</code> model represents a conversation between users.</p>
+<h3 id="fields">Fields<a class="headerlink" href="#fields" title="Permanent link">&para;</a></h3>
+<h4 id="id">id<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>UUIDField</code> (Primary Key)</li>
+<li><strong>Description</strong>: Unique identifier for the chat room</li>
+</ul>
+<h4 id="title">title<a class="headerlink" href="#title" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>CharField(max_length=255, blank=True)</code></li>
+<li><strong>Description</strong>: Optional title for the chat. Auto-generated for DMs.</li>
+</ul>
+<h4 id="is_group">is_group<a class="headerlink" href="#is_group" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>BooleanField(default=False)</code></li>
+<li><strong>Description</strong>: Whether this is a group chat</li>
+</ul>
+<h4 id="is_room">is_room<a class="headerlink" href="#is_room" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>BooleanField(default=False)</code></li>
+<li><strong>Description</strong>: True for public/semi-public chat rooms, False for private chats</li>
+</ul>
+<h4 id="content_type">content_type<a class="headerlink" href="#content_type" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>ForeignKey(ContentType, null=True, blank=True)</code></li>
+<li><strong>Description</strong>: Content type for room chats (links to a model)</li>
+</ul>
+<h4 id="object_id">object_id<a class="headerlink" href="#object_id" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>PositiveIntegerField(null=True, blank=True)</code></li>
+<li><strong>Description</strong>: Object ID for room chats</li>
+</ul>
+<h4 id="content_object">content_object<a class="headerlink" href="#content_object" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>GenericForeignKey</code></li>
+<li><strong>Description</strong>: The actual object for room chats</li>
+</ul>
+<h4 id="members">members<a class="headerlink" href="#members" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>ManyToManyField(User, through='ChatMembership', related_name='chat_rooms')</code></li>
+<li><strong>Description</strong>: Users who are members of this chat</li>
+</ul>
+<h4 id="created_at">created_at<a class="headerlink" href="#created_at" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>DateTimeField(auto_now_add=True)</code></li>
+<li><strong>Description</strong>: When the chat was created</li>
+</ul>
+<h4 id="updated_at">updated_at<a class="headerlink" href="#updated_at" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>DateTimeField(auto_now=True)</code></li>
+<li><strong>Description</strong>: When the chat was last updated</li>
+</ul>
+<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
+<h4 id="can_user_joinuser">can_user_join(user)<a class="headerlink" href="#can_user_joinuser" title="Permanent link">&para;</a></h4>
+<p>Check if a user can join this chat room.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">if</span> <span class="n">chat_room</span><span class="o">.</span><span class="n">can_user_join</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">):</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="c1"># User can join</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">pass</span>
+</code></pre></div>
+<h4 id="can_user_leaveuser">can_user_leave(user)<a class="headerlink" href="#can_user_leaveuser" title="Permanent link">&para;</a></h4>
+<p>Check if a user can leave this chat room.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">if</span> <span class="n">chat_room</span><span class="o">.</span><span class="n">can_user_leave</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">):</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="c1"># User can leave</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">pass</span>
+</code></pre></div>
+<h3 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django_messaging.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatRoom</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Create a group chat</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">chat_room</span> <span class="o">=</span> <span class="n">ChatRoom</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Project Team&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">is_group</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Add members via ChatMembership</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django_messaging.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatMembership</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">ChatMembership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="n">chat</span><span class="o">=</span><span class="n">chat_room</span><span class="p">,</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">user</span><span class="o">=</span><span class="n">user1</span><span class="p">,</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">role</span><span class="o">=</span><span class="n">ChatMembership</span><span class="o">.</span><span class="n">Role</span><span class="o">.</span><span class="n">ADMIN</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="p">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="n">ChatMembership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="n">chat</span><span class="o">=</span><span class="n">chat_room</span><span class="p">,</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="n">user</span><span class="o">=</span><span class="n">user2</span><span class="p">,</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="n">role</span><span class="o">=</span><span class="n">ChatMembership</span><span class="o">.</span><span class="n">Role</span><span class="o">.</span><span class="n">MEMBER</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="p">)</span>
+</code></pre></div>
+<h2 id="chatmembership">ChatMembership<a class="headerlink" href="#chatmembership" title="Permanent link">&para;</a></h2>
+<p>The <code>ChatMembership</code> model represents a user's membership in a chat room.</p>
+<h3 id="fields_1">Fields<a class="headerlink" href="#fields_1" title="Permanent link">&para;</a></h3>
+<h4 id="id_1">id<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>UUIDField</code> (Primary Key)</li>
+<li><strong>Description</strong>: Unique identifier for the membership</li>
+</ul>
+<h4 id="user">user<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>ForeignKey(User, on_delete=CASCADE)</code></li>
+<li><strong>Description</strong>: The user who is a member</li>
+</ul>
+<h4 id="chat">chat<a class="headerlink" href="#chat" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>ForeignKey(ChatRoom, on_delete=CASCADE)</code></li>
+<li><strong>Description</strong>: The chat room</li>
+</ul>
+<h4 id="joined_at">joined_at<a class="headerlink" href="#joined_at" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>DateTimeField(auto_now_add=True)</code></li>
+<li><strong>Description</strong>: When the user joined</li>
+</ul>
+<h4 id="role">role<a class="headerlink" href="#role" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>CharField(max_length=20, choices=Role.choices)</code></li>
+<li><strong>Choices</strong>: <code>"admin"</code>, <code>"member"</code></li>
+<li><strong>Description</strong>: The user's role in the chat</li>
+</ul>
+<h3 id="unique-constraint">Unique Constraint<a class="headerlink" href="#unique-constraint" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">unique_together</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;chat&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="example-usage_1">Example Usage<a class="headerlink" href="#example-usage_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django_messaging.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatMembership</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Add a member</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">membership</span> <span class="o">=</span> <span class="n">ChatMembership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">chat</span><span class="o">=</span><span class="n">chat_room</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">user</span><span class="o">=</span><span class="n">new_user</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">role</span><span class="o">=</span><span class="n">ChatMembership</span><span class="o">.</span><span class="n">Role</span><span class="o">.</span><span class="n">MEMBER</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">)</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Check if user is admin</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">is_admin</span> <span class="o">=</span> <span class="n">ChatMembership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">chat</span><span class="o">=</span><span class="n">chat_room</span><span class="p">,</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="n">role</span><span class="o">=</span><span class="n">ChatMembership</span><span class="o">.</span><span class="n">Role</span><span class="o">.</span><span class="n">ADMIN</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="message">Message<a class="headerlink" href="#message" title="Permanent link">&para;</a></h2>
+<p>The <code>Message</code> model represents a single message in a chat.</p>
+<h3 id="fields_2">Fields<a class="headerlink" href="#fields_2" title="Permanent link">&para;</a></h3>
+<h4 id="id_2">id<a class="headerlink" href="#id_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>UUIDField</code> (Primary Key)</li>
+<li><strong>Description</strong>: Unique identifier for the message</li>
+</ul>
+<h4 id="chat_1">chat<a class="headerlink" href="#chat_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>ForeignKey(ChatRoom, on_delete=CASCADE, related_name='messages')</code></li>
+<li><strong>Description</strong>: The chat this message belongs to</li>
+</ul>
+<h4 id="sender">sender<a class="headerlink" href="#sender" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>ForeignKey(User, on_delete=CASCADE, related_name='sent_messages')</code></li>
+<li><strong>Description</strong>: The user who sent the message</li>
+</ul>
+<h4 id="content">content<a class="headerlink" href="#content" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>TextField</code></li>
+<li><strong>Description</strong>: The message content</li>
+</ul>
+<h4 id="file_attachment">file_attachment<a class="headerlink" href="#file_attachment" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>FileField(upload_to='chat_attachments/', blank=True, null=True)</code></li>
+<li><strong>Description</strong>: Optional file attachment</li>
+</ul>
+<h4 id="created_at_1">created_at<a class="headerlink" href="#created_at_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>DateTimeField(auto_now_add=True)</code></li>
+<li><strong>Description</strong>: When the message was created</li>
+</ul>
+<h4 id="updated_at_1">updated_at<a class="headerlink" href="#updated_at_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>DateTimeField(auto_now=True)</code></li>
+<li><strong>Description</strong>: When the message was last updated</li>
+</ul>
+<h4 id="is_edited">is_edited<a class="headerlink" href="#is_edited" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>BooleanField(default=False)</code></li>
+<li><strong>Description</strong>: Whether the message has been edited</li>
+</ul>
+<h4 id="is_deleted">is_deleted<a class="headerlink" href="#is_deleted" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>BooleanField(default=False)</code></li>
+<li><strong>Description</strong>: Whether the message has been deleted</li>
+</ul>
+<h3 id="example-usage_2">Example Usage<a class="headerlink" href="#example-usage_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django_messaging.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Create a message</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">message</span> <span class="o">=</span> <span class="n">Message</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">chat</span><span class="o">=</span><span class="n">chat_room</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">sender</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;Hello, everyone!&quot;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># Get messages in a chat</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="n">messages</span> <span class="o">=</span> <span class="n">Message</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">chat</span><span class="o">=</span><span class="n">chat_room</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="messagereadreceipt">MessageReadReceipt<a class="headerlink" href="#messagereadreceipt" title="Permanent link">&para;</a></h2>
+<p>The <code>MessageReadReceipt</code> model tracks read status for messages.</p>
+<h3 id="fields_3">Fields<a class="headerlink" href="#fields_3" title="Permanent link">&para;</a></h3>
+<h4 id="id_3">id<a class="headerlink" href="#id_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>UUIDField</code> (Primary Key)</li>
+<li><strong>Description</strong>: Unique identifier for the read receipt</li>
+</ul>
+<h4 id="message_1">message<a class="headerlink" href="#message_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>ForeignKey(Message, on_delete=CASCADE, related_name='read_receipts')</code></li>
+<li><strong>Description</strong>: The message this receipt is for</li>
+</ul>
+<h4 id="user_1">user<a class="headerlink" href="#user_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>ForeignKey(User, on_delete=CASCADE)</code></li>
+<li><strong>Description</strong>: The user who read the message</li>
+</ul>
+<h4 id="status">status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>CharField(max_length=20, choices=Status.choices)</code></li>
+<li><strong>Choices</strong>: <code>"delivered"</code>, <code>"seen"</code></li>
+<li><strong>Description</strong>: The read status</li>
+</ul>
+<h4 id="timestamp">timestamp<a class="headerlink" href="#timestamp" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>DateTimeField(auto_now=True)</code></li>
+<li><strong>Description</strong>: When the status was updated</li>
+</ul>
+<h3 id="unique-constraint_1">Unique Constraint<a class="headerlink" href="#unique-constraint_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">unique_together</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="example-usage_3">Example Usage<a class="headerlink" href="#example-usage_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django_messaging.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageReadReceipt</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Mark message as seen</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">receipt</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">MessageReadReceipt</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">update_or_create</span><span class="p">(</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="n">MessageReadReceipt</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">SEEN</span><span class="p">}</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># Check if user has seen a message</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="n">has_seen</span> <span class="o">=</span> <span class="n">MessageReadReceipt</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="n">status</span><span class="o">=</span><span class="n">MessageReadReceipt</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">SEEN</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="messagereaction">MessageReaction<a class="headerlink" href="#messagereaction" title="Permanent link">&para;</a></h2>
+<p>The <code>MessageReaction</code> model represents an emoji reaction to a message.</p>
+<h3 id="fields_4">Fields<a class="headerlink" href="#fields_4" title="Permanent link">&para;</a></h3>
+<h4 id="id_4">id<a class="headerlink" href="#id_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>UUIDField</code> (Primary Key)</li>
+<li><strong>Description</strong>: Unique identifier for the reaction</li>
+</ul>
+<h4 id="message_2">message<a class="headerlink" href="#message_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>ForeignKey(Message, on_delete=CASCADE, related_name='reactions')</code></li>
+<li><strong>Description</strong>: The message this reaction is for</li>
+</ul>
+<h4 id="user_2">user<a class="headerlink" href="#user_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>ForeignKey(User, on_delete=CASCADE, related_name='message_reactions')</code></li>
+<li><strong>Description</strong>: The user who added the reaction</li>
+</ul>
+<h4 id="emoji">emoji<a class="headerlink" href="#emoji" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>CharField(max_length=10)</code></li>
+<li><strong>Description</strong>: The emoji character(s)</li>
+</ul>
+<h4 id="created_at_2">created_at<a class="headerlink" href="#created_at_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Type</strong>: <code>DateTimeField(auto_now_add=True)</code></li>
+<li><strong>Description</strong>: When the reaction was added</li>
+</ul>
+<h3 id="unique-constraint_2">Unique Constraint<a class="headerlink" href="#unique-constraint_2" title="Permanent link">&para;</a></h3>
+<p>Each user can only add one reaction of each emoji type per message.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">unique_together</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;emoji&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="example-usage_4">Example Usage<a class="headerlink" href="#example-usage_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django_messaging.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageReaction</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># Add a reaction</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">reaction</span> <span class="o">=</span> <span class="n">MessageReaction</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="n">emoji</span><span class="o">=</span><span class="s2">&quot;👍&quot;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># Remove a reaction</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="n">MessageReaction</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>    <span class="n">emoji</span><span class="o">=</span><span class="s2">&quot;👍&quot;</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="c1"># Get reactions for a message</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="n">reactions</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">reactions</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="c1"># Group reactions by emoji</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Count</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="n">reaction_summary</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">reactions</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;emoji&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>    <span class="n">count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="p">)</span>
+</code></pre></div>
+<h2 id="database-schema">Database Schema<a class="headerlink" href="#database-schema" title="Permanent link">&para;</a></h2>
+<h3 id="entity-relationship-diagram">Entity Relationship Diagram<a class="headerlink" href="#entity-relationship-diagram" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>User (Django&#39;s User model)
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  |
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  |-- user (FK) --&gt; ChatMembership
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  |-- sender (FK) --&gt; Message
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  |-- user (FK) --&gt; MessageReadReceipt
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  |-- user (FK) --&gt; MessageReaction
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>ChatRoom
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>  |-- chat (FK) --&gt; ChatMembership
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>  |-- chat (FK) --&gt; Message
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  |-- content_type (FK) --&gt; ContentType
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>  |-- object_id --&gt; Any Model (GenericForeignKey)
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>Message
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>  |-- message (FK) --&gt; MessageReadReceipt
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>  |-- message (FK) --&gt; MessageReaction
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>ChatMembership
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>  |-- Through table connecting User and ChatRoom
+</code></pre></div>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Check the <a href="../api/">API Reference</a> for API endpoints</li>
+<li>Review <a href="../template-tags/">Template Tags</a> for template usage</li>
+<li>Explore <a href="../settings/">Settings Reference</a> for configuration</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Aidas Bendoraitis a.k.a. archatas / DjangoTricks">
+        <link rel="canonical" href="https://websightful.github.io/django-messaging-docs/reference/template-tags/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Template Tags - Django Messaging</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../css/style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Django Messaging</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Getting Started</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../getting-started/installation/" class="dropdown-item">Installation</a>
+</li>
+                                    
+<li>
+    <a href="../../getting-started/quick-start/" class="dropdown-item">Quick Start</a>
+</li>
+                                    
+<li>
+    <a href="../../getting-started/configuration/" class="dropdown-item">Configuration</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">User Guides</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../guides/websocket-setup/" class="dropdown-item">WebSocket Setup</a>
+</li>
+                                    
+<li>
+    <a href="../../guides/polling-setup/" class="dropdown-item">Polling Setup</a>
+</li>
+                                    
+<li>
+    <a href="../../guides/customization/" class="dropdown-item">Customization</a>
+</li>
+                                    
+<li>
+    <a href="../../guides/embedding-widgets/" class="dropdown-item">Embedding Widgets</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../api/" class="dropdown-item">API Endpoints</a>
+</li>
+                                    
+<li>
+    <a href="../settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Template Tags</a>
+</li>
+                                    
+<li>
+    <a href="../models/" class="dropdown-item">Models</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">About</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../faq/" class="dropdown-item">FAQ</a>
+</li>
+                                    
+<li>
+    <a href="../../changelog/" class="dropdown-item">Changelog</a>
+</li>
+                                    
+<li>
+    <a href="../../contributing/" class="dropdown-item">Contributing</a>
+</li>
+                                    
+<li>
+    <a href="../../license/" class="dropdown-item">License</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../settings/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../models/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://websightful.gumroad.com/l/django-messaging" class="nav-link">Buy Now!</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#template-tags-reference" class="nav-link">Template Tags Reference</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#loading-template-tags" class="nav-link">Loading Template Tags</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#template-filters" class="nav-link">Template Filters</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#context-processor" class="nav-link">Context Processor</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#complete-example" class="nav-link">Complete Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#custom-template-tags" class="nav-link">Custom Template Tags</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#next-steps" class="nav-link">Next Steps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="template-tags-reference">Template Tags Reference<a class="headerlink" href="#template-tags-reference" title="Permanent link">&para;</a></h1>
+<p>Django Messaging provides template tags and filters for use in your templates.</p>
+<h2 id="loading-template-tags">Loading Template Tags<a class="headerlink" href="#loading-template-tags" title="Permanent link">&para;</a></h2>
+<p>Load the template tags in your template:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">{%</span> <span class="k">load</span> <span class="nv">messaging_tags</span> <span class="cp">%}</span>
+</code></pre></div>
+<h3 id="get_room_for_object">get_room_for_object<a class="headerlink" href="#get_room_for_object" title="Permanent link">&para;</a></h3>
+<p>Get or create a chat room for a content object.</p>
+<p><strong>Syntax</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">{%</span> <span class="k">get_room_for_object</span> <span class="nv">content_object</span> <span class="k">as</span> <span class="nv">variable_name</span> <span class="cp">%}</span>
+</code></pre></div>
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>content_object</code>: Any Django model instance</li>
+<li><code>variable_name</code>: Variable name to store the room object</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">{%</span> <span class="k">load</span> <span class="nv">messaging_tags</span> <span class="cp">%}</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cp">{%</span> <span class="k">get_room_for_object</span> <span class="nv">post</span> <span class="k">as</span> <span class="nv">room</span> <span class="cp">%}</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="x">&lt;div class=&quot;room-info&quot;&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="x">    &lt;h3&gt;Discussion for: </span><span class="cp">{{</span> <span class="nv">post.title</span> <span class="cp">}}</span><span class="x">&lt;/h3&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="x">    &lt;p&gt;Room ID: </span><span class="cp">{{</span> <span class="nv">room.id</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="x">    &lt;p&gt;Members: </span><span class="cp">{{</span> <span class="nv">room.members.count</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="x">&lt;/div&gt;</span>
+</code></pre></div>
+<h2 id="template-filters">Template Filters<a class="headerlink" href="#template-filters" title="Permanent link">&para;</a></h2>
+<p>Load the template filters in your template:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">{%</span> <span class="k">load</span> <span class="nv">messaging_filters</span> <span class="cp">%}</span>
+</code></pre></div>
+<h3 id="get_user_display_name">get_user_display_name<a class="headerlink" href="#get_user_display_name" title="Permanent link">&para;</a></h3>
+<p>Get the display name for a user using the configured function.</p>
+<p><strong>Syntax</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">{{</span> <span class="nv">user</span><span class="o">|</span><span class="nf">get_user_display_name</span> <span class="cp">}}</span>
+</code></pre></div>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">{%</span> <span class="k">load</span> <span class="nv">messaging_filters</span> <span class="cp">%}</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="x">&lt;p&gt;Welcome, </span><span class="cp">{{</span> <span class="nv">request.user</span><span class="o">|</span><span class="nf">get_user_display_name</span> <span class="cp">}}</span><span class="x">!&lt;/p&gt;</span>
+</code></pre></div>
+<h3 id="get_user_avatar_url">get_user_avatar_url<a class="headerlink" href="#get_user_avatar_url" title="Permanent link">&para;</a></h3>
+<p>Get the avatar URL for a user using the configured function.</p>
+<p><strong>Syntax</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">{{</span> <span class="nv">user</span><span class="o">|</span><span class="nf">get_user_avatar_url</span> <span class="cp">}}</span>
+</code></pre></div>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">{%</span> <span class="k">load</span> <span class="nv">messaging_filters</span> <span class="cp">%}</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="x">&lt;img src=&quot;</span><span class="cp">{{</span> <span class="nv">request.user</span><span class="o">|</span><span class="nf">get_user_avatar_url</span> <span class="cp">}}</span><span class="x">&quot; alt=&quot;</span><span class="cp">{{</span> <span class="nv">request.user</span><span class="o">|</span><span class="nf">get_user_display_name</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
+</code></pre></div>
+<h2 id="context-processor">Context Processor<a class="headerlink" href="#context-processor" title="Permanent link">&para;</a></h2>
+<p>The <code>messaging_settings</code> context processor makes settings available in all templates.</p>
+<p><strong>Add to settings</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        <span class="s2">&quot;OPTIONS&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>            <span class="s2">&quot;context_processors&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>                <span class="c1"># ...</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>                <span class="s2">&quot;django_messaging.context_processors.messaging_settings&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>            <span class="p">],</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>        <span class="p">},</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="p">},</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">]</span>
+</code></pre></div>
+<p><strong>Usage in templates</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cp">{%</span> <span class="k">if</span> <span class="nv">MESSAGING_SETTINGS.ENABLE_DMS</span> <span class="cp">%}</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="x">    &lt;a href=&quot;</span><span class="cp">{%</span> <span class="k">url</span> <span class="s1">&#39;messaging:messages&#39;</span> <span class="cp">%}</span><span class="x">&quot;&gt;Messages&lt;/a&gt;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="cp">{%</span> <span class="k">if</span> <span class="nv">MESSAGING_SETTINGS.ALLOW_EDITING_OWN_MESSAGES</span> <span class="cp">%}</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="x">    &lt;button&gt;Edit Message&lt;/button&gt;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+</code></pre></div>
+<p><strong>Available settings</strong>:</p>
+<ul>
+<li><code>MESSAGING_SETTINGS.TRANSPORT</code></li>
+<li><code>MESSAGING_SETTINGS.ENABLE_DMS</code></li>
+<li><code>MESSAGING_SETTINGS.ENABLE_CHAT_ROOMS</code></li>
+<li><code>MESSAGING_SETTINGS.SHOW_DMS_IN_MESSAGES</code></li>
+<li><code>MESSAGING_SETTINGS.SHOW_CHAT_ROOMS_IN_MESSAGES</code></li>
+<li><code>MESSAGING_SETTINGS.ALLOW_EDITING_OWN_MESSAGES</code></li>
+<li><code>MESSAGING_SETTINGS.ALLOW_DELETING_OWN_MESSAGES</code></li>
+<li><code>MESSAGING_SETTINGS.ALLOW_ADDING_REACTIONS</code></li>
+<li><code>MESSAGING_SETTINGS.ALLOW_RENAMING_CHAT_ROOMS</code></li>
+<li><code>MESSAGING_SETTINGS.ALLOW_RENAMING_DMS</code></li>
+</ul>
+<h2 id="complete-example">Complete Example<a class="headerlink" href="#complete-example" title="Permanent link">&para;</a></h2>
+<p>Here's a complete example using multiple template tags and filters:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cp">{%</span> <span class="k">load</span> <span class="nv">messaging_tags</span> <span class="cp">%}</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="cp">{%</span> <span class="k">load</span> <span class="nv">messaging_filters</span> <span class="cp">%}</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="x">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="x">&lt;html&gt;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="x">&lt;head&gt;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="x">    &lt;title&gt;My Site&lt;/title&gt;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="x">&lt;/head&gt;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="x">&lt;body&gt;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="x">    &lt;nav&gt;</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="x">        &lt;ul&gt;</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="x">            &lt;li&gt;</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="x">                &lt;a href=&quot;</span><span class="cp">{%</span> <span class="k">url</span> <span class="s1">&#39;messaging:messages&#39;</span> <span class="cp">%}</span><span class="x">&quot;&gt;</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="x">                    Messages</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="x">                &lt;/a&gt;</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="x">            &lt;/li&gt;</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="x">        &lt;/ul&gt;</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="x">        &lt;div class=&quot;user-info&quot;&gt;</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="x">            &lt;img src=&quot;</span><span class="cp">{{</span> <span class="nv">request.user</span><span class="o">|</span><span class="nf">get_user_avatar_url</span> <span class="cp">}}</span><span class="x">&quot; alt=&quot;Avatar&quot;&gt;</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="x">            &lt;span&gt;</span><span class="cp">{{</span> <span class="nv">request.user</span><span class="o">|</span><span class="nf">get_user_display_name</span> <span class="cp">}}</span><span class="x">&lt;/span&gt;</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="x">        &lt;/div&gt;</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="x">    &lt;/nav&gt;</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="x">    &lt;main&gt;</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="x">        </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">MESSAGING_SETTINGS.ENABLE_DMS</span> <span class="k">and</span> <span class="nv">profile_user</span> <span class="cp">%}</span>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="x">            &lt;section class=&quot;dm-section&quot;&gt;</span>
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="x">                &lt;h2&gt;Send a Message&lt;/h2&gt;</span>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="x">                </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;messaging/includes/dm.html&quot;</span> <span class="k">with</span> <span class="nv">contact_user</span><span class="o">=</span><span class="nv">profile_user</span> <span class="cp">%}</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="x">            &lt;/section&gt;</span>
+<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="x">        </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>
+<a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a><span class="x">        </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">MESSAGING_SETTINGS.ENABLE_CHAT_ROOMS</span> <span class="k">and</span> <span class="nv">post</span> <span class="cp">%}</span>
+<a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="x">            &lt;section class=&quot;discussion-section&quot;&gt;</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="x">                &lt;h2&gt;Discussion&lt;/h2&gt;</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="x">                </span><span class="cp">{%</span> <span class="k">get_room_for_object</span> <span class="nv">post</span> <span class="k">as</span> <span class="nv">room</span> <span class="cp">%}</span>
+<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="x">                &lt;p&gt;</span><span class="cp">{{</span> <span class="nv">room.members.count</span> <span class="cp">}}</span><span class="x"> participants&lt;/p&gt;</span>
+<a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a><span class="x">                </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;messaging/includes/room.html&quot;</span> <span class="k">with</span> <span class="nv">content_object</span><span class="o">=</span><span class="nv">post</span> <span class="cp">%}</span>
+<a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="x">            &lt;/section&gt;</span>
+<a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a><span class="x">        </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a><span class="x">    &lt;/main&gt;</span>
+<a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a><span class="x">&lt;/body&gt;</span>
+<a id="__codelineno-10-43" name="__codelineno-10-43" href="#__codelineno-10-43"></a><span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h2 id="custom-template-tags">Custom Template Tags<a class="headerlink" href="#custom-template-tags" title="Permanent link">&para;</a></h2>
+<p>You can create your own template tags that work with Django Messaging:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># myapp/templatetags/my_messaging_tags.py</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django</span><span class="w"> </span><span class="kn">import</span> <span class="n">template</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django_messaging.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatRoom</span><span class="p">,</span> <span class="n">ChatMembership</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">register</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">Library</span><span class="p">()</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nd">@register</span><span class="o">.</span><span class="n">simple_tag</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_active_chats</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Get chats with recent activity&quot;&quot;&quot;</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="k">return</span> <span class="n">ChatRoom</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>        <span class="n">members</span><span class="o">=</span><span class="n">user</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-updated_at&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="nd">@register</span><span class="o">.</span><span class="n">filter</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">is_chat_admin</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">chat</span><span class="p">):</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if user is admin of a chat&quot;&quot;&quot;</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    <span class="k">return</span> <span class="n">ChatMembership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>        <span class="n">chat</span><span class="o">=</span><span class="n">chat</span><span class="p">,</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>        <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>        <span class="n">role</span><span class="o">=</span><span class="n">ChatMembership</span><span class="o">.</span><span class="n">Role</span><span class="o">.</span><span class="n">ADMIN</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>    <span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Usage</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cp">{%</span> <span class="k">load</span> <span class="nv">my_messaging_tags</span> <span class="cp">%}</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="cp">{%</span> <span class="k">get_active_chats</span> <span class="nv">request.user</span> <span class="k">as</span> <span class="nv">active_chats</span> <span class="cp">%}</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="cp">{%</span> <span class="k">for</span> <span class="nv">chat</span> <span class="k">in</span> <span class="nv">active_chats</span> <span class="cp">%}</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="x">    &lt;div class=&quot;chat-item&quot;&gt;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="x">        </span><span class="cp">{{</span> <span class="nv">chat.title</span> <span class="cp">}}</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="x">        </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">request.user</span><span class="o">|</span><span class="nf">is_chat_admin</span><span class="o">:</span><span class="nv">chat</span> <span class="cp">%}</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="x">            &lt;span class=&quot;admin-badge&quot;&gt;Admin&lt;/span&gt;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="x">        </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="x">    &lt;/div&gt;</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</code></pre></div>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Check the <a href="../api/">API Reference</a> for programmatic access</li>
+<li>Review <a href="../settings/">Settings Reference</a> for configuration</li>
+<li>Explore <a href="../models/">Models</a> for data structure</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

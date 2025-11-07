@@ -1,0 +1,42 @@
+h1 {
+    margin-top: 0.75em;
+    margin-bottom: 1em;
+}
+h2 {
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+}
+h3, h4, h5, h6 {
+    margin-top: 1.25em;
+    margin-bottom: 0.5em;
+}
+.bg-primary {
+    background: rgb(15 23 42)!important;
+}
+a {
+    color: #D98E16;
+}
+a code {
+    color: #D98E16;
+}
+a:hover {
+    color: #EAA636;
+}
+a:hover code, a:focus code {
+    color: #EAA636;
+}
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #EAA636;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: #EAA636;
+    color: black;
+}
+.form-control:focus {
+    border-color: #EAA636;
+    box-shadow: 0 0 0 0.2rem #EAA636;
+}
+blockquote {
+    border-left: 3px #EAA636 solid;
+    padding-left: 1em;
+}

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Aidas Bendoraitis a.k.a. archatas / DjangoTricks">
+        <link rel="canonical" href="https://websightful.github.io/django-messaging-docs/guides/polling-setup/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Polling Setup - Django Messaging</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../css/style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Django Messaging</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Getting Started</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../getting-started/installation/" class="dropdown-item">Installation</a>
+</li>
+                                    
+<li>
+    <a href="../../getting-started/quick-start/" class="dropdown-item">Quick Start</a>
+</li>
+                                    
+<li>
+    <a href="../../getting-started/configuration/" class="dropdown-item">Configuration</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">User Guides</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../websocket-setup/" class="dropdown-item">WebSocket Setup</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Polling Setup</a>
+</li>
+                                    
+<li>
+    <a href="../customization/" class="dropdown-item">Customization</a>
+</li>
+                                    
+<li>
+    <a href="../embedding-widgets/" class="dropdown-item">Embedding Widgets</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../reference/api/" class="dropdown-item">API Endpoints</a>
+</li>
+                                    
+<li>
+    <a href="../../reference/settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../../reference/template-tags/" class="dropdown-item">Template Tags</a>
+</li>
+                                    
+<li>
+    <a href="../../reference/models/" class="dropdown-item">Models</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">About</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../faq/" class="dropdown-item">FAQ</a>
+</li>
+                                    
+<li>
+    <a href="../../changelog/" class="dropdown-item">Changelog</a>
+</li>
+                                    
+<li>
+    <a href="../../contributing/" class="dropdown-item">Contributing</a>
+</li>
+                                    
+<li>
+    <a href="../../license/" class="dropdown-item">License</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../websocket-setup/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../customization/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://websightful.gumroad.com/l/django-messaging" class="nav-link">Buy Now!</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#polling-setup" class="nav-link">Polling Setup</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#when-to-use-polling" class="nav-link">When to Use Polling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#step-1-configure-polling-transport" class="nav-link">Step 1: Configure Polling Transport</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#step-2-run-the-development-server" class="nav-link">Step 2: Run the Development Server</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#how-polling-works" class="nav-link">How Polling Works</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#customizing-polling-behavior" class="nav-link">Customizing Polling Behavior</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#production-deployment" class="nav-link">Production Deployment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#nginx-configuration" class="nav-link">Nginx Configuration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#performance-considerations" class="nav-link">Performance Considerations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#advantages-of-polling" class="nav-link">Advantages of Polling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#limitations-of-polling" class="nav-link">Limitations of Polling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#switching-from-polling-to-websocket" class="nav-link">Switching from Polling to WebSocket</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#troubleshooting" class="nav-link">Troubleshooting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#complete-configuration-example" class="nav-link">Complete Configuration Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#next-steps" class="nav-link">Next Steps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="polling-setup">Polling Setup<a class="headerlink" href="#polling-setup" title="Permanent link">&para;</a></h1>
+<p>Polling transport provides a simpler alternative to WebSocket for message delivery. This guide will help you set up polling transport for Django Messaging.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Polling transport:</p>
+<ul>
+<li>✅ <strong>Simple setup</strong> - No Redis or Django Channels required</li>
+<li>✅ <strong>Works with standard Django</strong> - Uses regular WSGI servers</li>
+<li>✅ <strong>Easy deployment</strong> - No special server configuration needed</li>
+<li>⚠️ <strong>Slight delay</strong> - Messages appear with a small delay (configurable)</li>
+<li>⚠️ <strong>More server requests</strong> - Clients poll the server periodically</li>
+</ul>
+<h2 id="when-to-use-polling">When to Use Polling<a class="headerlink" href="#when-to-use-polling" title="Permanent link">&para;</a></h2>
+<p>Polling is ideal for:</p>
+<ul>
+<li><strong>Development and testing</strong> - Quick setup without additional dependencies</li>
+<li><strong>Small to medium sites</strong> - Where real-time delivery isn't critical</li>
+<li><strong>Shared hosting</strong> - Where WebSocket support isn't available</li>
+<li><strong>Simple deployments</strong> - Where you want to avoid Redis setup</li>
+</ul>
+<p>Consider WebSocket if you need:</p>
+<ul>
+<li>Instant message delivery</li>
+<li>High-traffic sites with many concurrent users</li>
+<li>Real-time typing indicators and presence</li>
+</ul>
+<h2 id="step-1-configure-polling-transport">Step 1: Configure Polling Transport<a class="headerlink" href="#step-1-configure-polling-transport" title="Permanent link">&para;</a></h2>
+<p>Add this to your <code>settings.py</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">&quot;TRANSPORT&quot;</span><span class="p">:</span> <span class="s2">&quot;polling&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>That's it! No additional dependencies or configuration required.</p>
+<h2 id="step-2-run-the-development-server">Step 2: Run the Development Server<a class="headerlink" href="#step-2-run-the-development-server" title="Permanent link">&para;</a></h2>
+<p>Use the standard Django development server:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+</code></pre></div>
+<h2 id="how-polling-works">How Polling Works<a class="headerlink" href="#how-polling-works" title="Permanent link">&para;</a></h2>
+<p>With polling transport:</p>
+<ol>
+<li>The client sends periodic requests to the server (every 3 seconds by default)</li>
+<li>The server checks for new messages and returns them</li>
+<li>The client updates the UI with any new messages</li>
+<li>The process repeats</li>
+</ol>
+<p>This creates a near-real-time experience with minimal setup.</p>
+<h2 id="customizing-polling-behavior">Customizing Polling Behavior<a class="headerlink" href="#customizing-polling-behavior" title="Permanent link">&para;</a></h2>
+<p>While the polling interval is not directly configurable through settings, you can customize it by overriding the JavaScript if needed.</p>
+<h3 id="default-behavior">Default Behavior<a class="headerlink" href="#default-behavior" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Polling interval</strong>: 3 seconds</li>
+<li><strong>Timeout</strong>: 30 seconds per request</li>
+<li><strong>Retry on error</strong>: Automatic with exponential backoff</li>
+</ul>
+<h2 id="production-deployment">Production Deployment<a class="headerlink" href="#production-deployment" title="Permanent link">&para;</a></h2>
+<p>Polling works with any standard WSGI server:</p>
+<h3 id="using-gunicorn">Using Gunicorn<a class="headerlink" href="#using-gunicorn" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>gunicorn
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>gunicorn<span class="w"> </span>myproject.wsgi:application<span class="w"> </span>--bind<span class="w"> </span><span class="m">0</span>.0.0.0:8000<span class="w"> </span>--workers<span class="w"> </span><span class="m">4</span>
+</code></pre></div>
+<h4 id="systemd-service-for-gunicorn">Systemd Service for Gunicorn<a class="headerlink" href="#systemd-service-for-gunicorn" title="Permanent link">&para;</a></h4>
+<p>Create <code>/etc/systemd/system/gunicorn.service</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[Unit]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">Gunicorn WSGI Server for Django Messaging</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">[Service]</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="na">Type</span><span class="o">=</span><span class="s">notify</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="na">User</span><span class="o">=</span><span class="s">www-data</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="na">Group</span><span class="o">=</span><span class="s">www-data</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/var/www/myproject</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="na">Environment</span><span class="o">=</span><span class="s">&quot;PATH=/var/www/myproject/venv/bin&quot;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/var/www/myproject/venv/bin/gunicorn </span>\
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="s">myproject.wsgi:application </span>\
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="s">--bind 0.0.0.0:8000 </span>\
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="s">--workers 4 </span>\
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="s">--log-level info </span>\
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="s">--access-logfile /var/log/gunicorn/access.log </span>\
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="s">--error-logfile /var/log/gunicorn/error.log</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="na">Restart</span><span class="o">=</span><span class="s">always</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="na">RestartSec</span><span class="o">=</span><span class="s">10</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="k">[Install]</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></div>
+<p>Create log directory and enable the service:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/log/gunicorn
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>chown<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/log/gunicorn
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>gunicorn
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>gunicorn
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>gunicorn
+</code></pre></div>
+<h3 id="using-uwsgi">Using uWSGI<a class="headerlink" href="#using-uwsgi" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pip<span class="w"> </span>install<span class="w"> </span>uwsgi
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>uwsgi<span class="w"> </span>--http<span class="w"> </span>:8000<span class="w"> </span>--module<span class="w"> </span>myproject.wsgi:application<span class="w"> </span>--workers<span class="w"> </span><span class="m">4</span>
+</code></pre></div>
+<h4 id="systemd-service-for-uwsgi">Systemd Service for uWSGI<a class="headerlink" href="#systemd-service-for-uwsgi" title="Permanent link">&para;</a></h4>
+<p>Create <code>/etc/systemd/system/uwsgi.service</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">[Unit]</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">uWSGI Server for Django Messaging</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">[Service]</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="na">Type</span><span class="o">=</span><span class="s">notify</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="na">User</span><span class="o">=</span><span class="s">www-data</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="na">Group</span><span class="o">=</span><span class="s">www-data</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/var/www/myproject</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="na">Environment</span><span class="o">=</span><span class="s">&quot;PATH=/var/www/myproject/venv/bin&quot;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/var/www/myproject/venv/bin/uwsgi </span>\
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="s">--http :8000 </span>\
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="s">--module myproject.wsgi:application </span>\
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="s">--workers 4 </span>\
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="s">--master </span>\
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="s">--enable-threads </span>\
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="s">--logto /var/log/uwsgi/uwsgi.log</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="na">Restart</span><span class="o">=</span><span class="s">always</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="na">RestartSec</span><span class="o">=</span><span class="s">10</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="k">[Install]</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></div>
+<p>Create log directory and enable the service:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/log/uwsgi
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>chown<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/log/uwsgi
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>uwsgi
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>uwsgi
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>uwsgi
+</code></pre></div>
+<h3 id="using-mod_wsgi-apache">Using mod_wsgi (Apache)<a class="headerlink" href="#using-mod_wsgi-apache" title="Permanent link">&para;</a></h3>
+<p>Configure Apache with mod_wsgi as you normally would for Django applications.</p>
+<h3 id="systemd-service-configuration-notes">Systemd Service Configuration Notes<a class="headerlink" href="#systemd-service-configuration-notes" title="Permanent link">&para;</a></h3>
+<p><strong>Important settings to customize:</strong></p>
+<ul>
+<li><code>User</code> and <code>Group</code>: Change from <code>www-data</code> to your application user</li>
+<li><code>WorkingDirectory</code>: Set to your Django project root directory</li>
+<li><code>Environment="PATH=..."</code>: Set to your virtual environment's bin directory</li>
+<li><code>ExecStart</code>: Update paths to match your installation</li>
+<li><code>--workers</code>: Adjust based on CPU cores (typically 2-4 × CPU cores)</li>
+</ul>
+<p><strong>Useful systemd commands:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># View logs</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>gunicorn<span class="w"> </span>-f
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>uwsgi<span class="w"> </span>-f
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># Restart service</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>gunicorn
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>uwsgi
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># Stop service</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>gunicorn
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1"># Check status</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>gunicorn
+</code></pre></div>
+<h2 id="nginx-configuration">Nginx Configuration<a class="headerlink" href="#nginx-configuration" title="Permanent link">&para;</a></h2>
+<p>Example Nginx configuration for polling transport:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">upstream</span><span class="w"> </span><span class="s">django</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8000</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">}</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://django</span><span class="p">;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/static/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">        </span><span class="kn">alias</span><span class="w"> </span><span class="s">/path/to/staticfiles/</span><span class="p">;</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/media/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">        </span><span class="kn">alias</span><span class="w"> </span><span class="s">/path/to/media/</span><span class="p">;</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="server-load">Server Load<a class="headerlink" href="#server-load" title="Permanent link">&para;</a></h3>
+<p>Polling creates more HTTP requests than WebSocket. For a site with 100 concurrent users:</p>
+<ul>
+<li><strong>Polling</strong>: ~33 requests/second (100 users × 1 request/3 seconds)</li>
+<li><strong>WebSocket</strong>: Minimal overhead (persistent connections)</li>
+</ul>
+<h3 id="optimization-tips">Optimization Tips<a class="headerlink" href="#optimization-tips" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Use caching</strong> - Cache user lists and chat metadata</li>
+<li><strong>Database indexing</strong> - Ensure proper indexes on message queries</li>
+<li><strong>Pagination</strong> - Limit messages returned per request</li>
+<li><strong>CDN for static files</strong> - Reduce server load</li>
+</ol>
+<h3 id="when-to-switch-to-websocket">When to Switch to WebSocket<a class="headerlink" href="#when-to-switch-to-websocket" title="Permanent link">&para;</a></h3>
+<p>Consider switching to WebSocket if:</p>
+<ul>
+<li>You have &gt; 500 concurrent users</li>
+<li>Server load becomes an issue</li>
+<li>You need instant message delivery</li>
+<li>You want typing indicators and presence</li>
+</ul>
+<h2 id="advantages-of-polling">Advantages of Polling<a class="headerlink" href="#advantages-of-polling" title="Permanent link">&para;</a></h2>
+<h3 id="simplicity">Simplicity<a class="headerlink" href="#simplicity" title="Permanent link">&para;</a></h3>
+<ul>
+<li>No Redis installation or management</li>
+<li>No Django Channels configuration</li>
+<li>Works with standard Django deployment</li>
+</ul>
+<h3 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Works on any hosting platform</li>
+<li>No special server requirements</li>
+<li>Compatible with all browsers</li>
+</ul>
+<h3 id="reliability">Reliability<a class="headerlink" href="#reliability" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Automatic reconnection on network issues</li>
+<li>No WebSocket connection drops</li>
+<li>Works behind restrictive firewalls</li>
+</ul>
+<h2 id="limitations-of-polling">Limitations of Polling<a class="headerlink" href="#limitations-of-polling" title="Permanent link">&para;</a></h2>
+<h3 id="delay">Delay<a class="headerlink" href="#delay" title="Permanent link">&para;</a></h3>
+<p>Messages appear with a 0-3 second delay (average 1.5 seconds).</p>
+<h3 id="server-load_1">Server Load<a class="headerlink" href="#server-load_1" title="Permanent link">&para;</a></h3>
+<p>More HTTP requests compared to WebSocket.</p>
+<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<p>Some features work differently:</p>
+<ul>
+<li><strong>Typing indicators</strong>: Updated every 3 seconds instead of instantly</li>
+<li><strong>Read receipts</strong>: Updated on next poll instead of immediately</li>
+<li><strong>Presence</strong>: Updated periodically instead of in real-time</li>
+</ul>
+<h2 id="switching-from-polling-to-websocket">Switching from Polling to WebSocket<a class="headerlink" href="#switching-from-polling-to-websocket" title="Permanent link">&para;</a></h2>
+<p>To upgrade from polling to WebSocket later:</p>
+<ol>
+<li>Follow the <a href="../websocket-setup/">WebSocket Setup Guide</a></li>
+<li>Change <code>TRANSPORT</code> setting to <code>"websocket"</code></li>
+<li>Restart your server</li>
+</ol>
+<p>No database changes or data migration required!</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="messages-not-appearing">Messages Not Appearing<a class="headerlink" href="#messages-not-appearing" title="Permanent link">&para;</a></h3>
+<p><strong>Problem</strong>: New messages don't appear in the chat.</p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Check browser console for errors</li>
+<li>Verify <code>TRANSPORT</code> is set to <code>"polling"</code></li>
+<li>Check that the API endpoints are accessible</li>
+<li>Verify user is authenticated</li>
+</ol>
+<h3 id="high-server-load">High Server Load<a class="headerlink" href="#high-server-load" title="Permanent link">&para;</a></h3>
+<p><strong>Problem</strong>: Server experiencing high load with polling.</p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Implement database query optimization</li>
+<li>Add caching for frequently accessed data</li>
+<li>Increase polling interval (requires JavaScript customization)</li>
+<li>Consider switching to WebSocket</li>
+</ol>
+<h3 id="polling-requests-failing">Polling Requests Failing<a class="headerlink" href="#polling-requests-failing" title="Permanent link">&para;</a></h3>
+<p><strong>Problem</strong>: Polling requests return errors.</p>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Check server logs for error details</li>
+<li>Verify API endpoints are working: <code>/messages/api/chats/</code></li>
+<li>Check authentication middleware is configured</li>
+<li>Verify CSRF token handling</li>
+</ol>
+<h2 id="complete-configuration-example">Complete Configuration Example<a class="headerlink" href="#complete-configuration-example" title="Permanent link">&para;</a></h2>
+<p>Here's a complete configuration for polling transport:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># settings.py</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="c1"># Use polling transport</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="s2">&quot;TRANSPORT&quot;</span><span class="p">:</span> <span class="s2">&quot;polling&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="c1"># Pagination (keep these reasonable for polling)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="s2">&quot;MESSAGES_PER_PAGE&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="s2">&quot;CHATS_PER_PAGE&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="c1"># Layout settings</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="s2">&quot;TOP_NAVIGATION_HEIGHT&quot;</span><span class="p">:</span> <span class="s2">&quot;64px&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="s2">&quot;CONTENT_TOP_OFFSET&quot;</span><span class="p">:</span> <span class="s2">&quot;96px&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>    <span class="s2">&quot;CONTENT_BOTTOM_OFFSET&quot;</span><span class="p">:</span> <span class="s2">&quot;32px&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>    <span class="c1"># Features</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>    <span class="s2">&quot;ENABLE_CHAT_ROOMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>    <span class="s2">&quot;ENABLE_DMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>    <span class="s2">&quot;SHOW_CHAT_ROOMS_IN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>    <span class="s2">&quot;SHOW_DMS_IN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>    <span class="c1"># Permissions</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>    <span class="s2">&quot;ALLOW_EDITING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>    <span class="s2">&quot;ALLOW_DELETING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>    <span class="s2">&quot;ALLOW_ADDING_REACTIONS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="p">}</span>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="c1"># Standard Django settings (no Channels required)</span>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>    <span class="s2">&quot;django.contrib.admin&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>    <span class="s2">&quot;django.contrib.auth&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>    <span class="s2">&quot;django.contrib.contenttypes&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>    <span class="s2">&quot;django.contrib.sessions&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a>    <span class="s2">&quot;django.contrib.messages&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a>    <span class="s2">&quot;django.contrib.staticfiles&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a>
+<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a>    <span class="s2">&quot;rest_framework&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a>    <span class="s2">&quot;django_messaging&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a>
+<a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a>    <span class="c1"># Your apps</span>
+<a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a><span class="p">]</span>
+</code></pre></div>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Learn about <a href="../customization/">Customization</a> options</li>
+<li>Explore <a href="../embedding-widgets/">Embedding Widgets</a></li>
+<li>Check the <a href="../../reference/api/">API Reference</a></li>
+<li>Review <a href="../../getting-started/configuration/">Configuration Options</a></li>
+<li>Consider <a href="../websocket-setup/">WebSocket Setup</a> for real-time messaging</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
