@@ -2,6 +2,9 @@
 
 This guide will help you get started with Django Messaging quickly. We'll set up basic messaging functionality and send your first message.
 
+!!! tip "Try the Demo Project"
+    Want to see Django Messaging in action before integrating it? Check out the [demo project](https://github.com/websightful/django-messaging-demo-project) with a fully working example and comprehensive tests.
+
 ## Prerequisites
 
 Make sure you've completed the [Installation](installation.md) steps before proceeding.

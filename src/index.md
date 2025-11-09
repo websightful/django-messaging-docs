@@ -96,6 +96,8 @@ Include a chat room for any content object:
 
 Ready to add messaging to your Django project? Check out our [Installation Guide](getting-started/installation.md) to get started in minutes.
 
+Want to see it in action first? Try the [demo project](https://github.com/websightful/django-messaging-demo-project) to explore all features.
+
 ## Support
 
 For technical questions, feature requests, or bug reports, please contact Aidas Bendoraitis at <https://www.djangotricks.com/feedback/>.
