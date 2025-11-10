@@ -42,6 +42,6 @@ nav:
       - Models: 'reference/models.md'
   - About:
       - FAQ: 'faq.md'
-      - Changelog: 'changelog.md'
+      - Changelog: 'CHANGELOG.md'
       - Contributing: 'contributing.md'
       - License: 'license.md'

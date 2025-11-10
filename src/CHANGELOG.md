@@ -7,7 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v0.17.0] - 2025-11-01
+## [v0.19.1] - 2025-11-10
+
+### Fixed
+
+- Room messages show context menu only on hover or focus.
+
+## [v0.19.0] - 2025-11-09
+
+### Changed
+
+- The height of DM widget increased to approximately 75vh.
+
+## [v0.18.1] - 2025-11-09
+
+### Fixed
+
+- Mobile tabs should work well now.
+- The mobile view after renaming a chat fixed.
+
+## [v0.18.0] - 2025-11-09
+
+### Changed
+
+- Responsive layout with tabs on mobile for the messages view: chat list and message list.
+
+## [v0.19.1] - 2025-11-01
 
 ### Fixed
 

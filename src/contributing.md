@@ -141,7 +141,7 @@ docs/
 ├── guides/                     # User guides
 ├── reference/                  # API and technical reference
 ├── faq.md                      # FAQ
-├── changelog.md                # Version history
+├── CHANGELOG.md                # Version history
 ├── contributing.md             # This file
 └── license.md                  # License
 ```
