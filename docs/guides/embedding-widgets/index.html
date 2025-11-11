@@ -218,11 +218,14 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="x">    &lt;h1&gt;</span><span class="cp">{{</span> <span class="nv">profile_user.get_full_name</span> <span class="cp">}}</span><span class="x">&lt;/h1&gt;</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="x">    &lt;p&gt;</span><span class="cp">{{</span> <span class="nv">profile_user.email</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="x">    </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">MESSAGING_SETTINGS.ENABLE_DMS</span> <span class="k">and</span> <span class="nv">request.user.is_authenticated</span> <span class="k">and</span> <span class="nv">request.user</span> <span class="o">!=</span> <span class="nv">profile_user</span> <span class="cp">%}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="x">    </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">MESSAGING_SETTINGS.ENABLE_DMS</span> <span class="k">and</span> <span class="nv">request.user</span> <span class="o">!=</span> <span class="nv">profile_user</span> <span class="cp">%}</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="x">        </span><span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;messaging/includes/dm.html&quot;</span> <span class="k">with</span> <span class="nv">contact_user</span><span class="o">=</span><span class="nv">profile_user</span> <span class="cp">%}</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="x">    </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="x">&lt;/div&gt;</span>
 </code></pre></div>
+<p><strong>Note</strong>: The DM widget automatically handles authentication:
+- For <strong>authenticated users</strong>: Shows a chat toggle button that opens the messaging widget
+- For <strong>unauthenticated users</strong>: Shows a login link that redirects to the login page with <code>?next=</code> parameter to return to the current page after login</p>
 <h3 id="required-context">Required Context<a class="headerlink" href="#required-context" title="Permanent link">&para;</a></h3>
 <p>The DM widget requires:</p>
 <ul>

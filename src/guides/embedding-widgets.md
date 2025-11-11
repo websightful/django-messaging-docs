@@ -26,12 +26,16 @@ Include the DM widget in a user profile template:
 <div class="user-profile">
     <h1>{{ profile_user.get_full_name }}</h1>
     <p>{{ profile_user.email }}</p>
-    
-    {% if MESSAGING_SETTINGS.ENABLE_DMS and request.user.is_authenticated and request.user != profile_user %}
+
+    {% if MESSAGING_SETTINGS.ENABLE_DMS and request.user != profile_user %}
         {% include "messaging/includes/dm.html" with contact_user=profile_user %}
     {% endif %}
 </div>
 ```
+
+**Note**: The DM widget automatically handles authentication:
+- For **authenticated users**: Shows a chat toggle button that opens the messaging widget
+- For **unauthenticated users**: Shows a login link that redirects to the login page with `?next=` parameter to return to the current page after login
 
 ### Required Context
 

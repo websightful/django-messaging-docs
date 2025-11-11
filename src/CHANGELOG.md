@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v0.19.1] - 2025-11-10
+## [v0.19.2] - 2025-11-10
 
 ### Fixed
 
@@ -32,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Responsive layout with tabs on mobile for the messages view: chat list and message list.
 
-## [v0.19.1] - 2025-11-01
+## [v0.19.2] - 2025-11-01
 
 ### Fixed
 

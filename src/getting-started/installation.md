@@ -12,7 +12,7 @@ Before installing Django Messaging, ensure you have:
 
 ## Step 1: Purchase and Download
 
-Get the `django_messaging-0.19.1-py3-none-any.whl` package from [Gumroad](https://websightful.gumroad.com/l/django-messaging).
+Get the `django_messaging-0.19.2-py3-none-any.whl` package from [Gumroad](https://websightful.gumroad.com/l/django-messaging).
 
 ## Step 2: Install the Package
 
@@ -29,7 +29,7 @@ mkdir private_wheels
 2. Copy the wheel file to this directory:
 
 ```bash
-cp /path/to/django_messaging-0.19.1-py3-none-any.whl private_wheels/
+cp /path/to/django_messaging-0.19.2-py3-none-any.whl private_wheels/
 ```
 
 3. Add the package to your `requirements.txt`:
@@ -37,7 +37,7 @@ cp /path/to/django_messaging-0.19.1-py3-none-any.whl private_wheels/
 ```text
 Django>=4.2
 djangorestframework>=3.14
-file:./private_wheels/django_messaging-0.19.1-py3-none-any.whl
+file:./private_wheels/django_messaging-0.19.2-py3-none-any.whl
 ```
 
 4. Install the requirements:
@@ -51,7 +51,7 @@ pip install -r requirements.txt
 Install the wheel file directly:
 
 ```bash
-pip install /path/to/django_messaging-0.19.1-py3-none-any.whl
+pip install /path/to/django_messaging-0.19.2-py3-none-any.whl
 ```
 
 ## Step 3: Add to INSTALLED_APPS

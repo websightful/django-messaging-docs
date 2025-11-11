@@ -306,7 +306,7 @@ Yes, custom development services may be available. Contact the developer to disc
 ### How do I upgrade to a new version?
 
 1. Download the new wheel file
-2. Install it: `pip install django_messaging-0.19.1-py3-none-any.whl --upgrade`
+2. Install it: `pip install django_messaging-0.19.2-py3-none-any.whl --upgrade`
 3. Run migrations: `python manage.py migrate`
 4. Collect static files: `python manage.py collectstatic`
 5. Restart your server
