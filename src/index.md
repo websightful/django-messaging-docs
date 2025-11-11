@@ -54,7 +54,7 @@ Django Messaging is a comprehensive messaging solution for Django applications t
 | Translatable                     | ✔︎                                             |
 | Configurable                     | ✔︎                                             |
 | Unlimited websites               | ✔︎                                             |
-| Latest package version           | 0.19.2                                         |
+| Latest package version           | 0.20.0                                         |
 
 ## Benefits
 

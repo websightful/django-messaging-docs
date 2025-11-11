@@ -357,6 +357,44 @@ def get_user_avatar_url(user):
 
 **Default behavior**: Generates an SVG data URL with user initials and a consistent color based on the user's ID.
 
+### LOGIN_URL
+
+**Type**: `str` (URL name, path, or full URL)
+**Default**: `"login"`
+
+URL to redirect unauthenticated users to when they try to access chat features in embedded widgets (DM widget and room chat).
+
+```python
+DJANGO_MESSAGING = {
+    "LOGIN_URL": "login",  # URL name
+    # or
+    "LOGIN_URL": "/accounts/login/",  # Path
+    # or
+    "LOGIN_URL": "https://example.com/login/",  # Full URL
+}
+```
+
+The setting accepts three formats:
+
+1. **URL name** (default): A Django URL name that will be resolved using `reverse()`
+   ```python
+   "LOGIN_URL": "login"  # Resolves to the URL named 'login'
+   ```
+
+2. **Path**: A URL path starting with `/`
+   ```python
+   "LOGIN_URL": "/accounts/login/"
+   ```
+
+3. **Full URL**: A complete URL starting with `http://` or `https://`
+   ```python
+   "LOGIN_URL": "https://example.com/login/"
+   ```
+
+**Usage**: When an unauthenticated user encounters a chat widget (DM or room), they will see a login link instead of the chat interface. Clicking the link redirects them to the configured login URL with a `?next=` parameter to return them to the current page after login.
+
+**Note**: This setting is resolved at template render time and made available in templates via `MESSAGING_SETTINGS.LOGIN_URL`.
+
 ## Complete Example
 
 Here's a complete configuration example:
@@ -393,6 +431,9 @@ DJANGO_MESSAGING = {
     "GET_CONTACT_LIST_FUNCTION": "django_messaging.defaults.get_contact_list",
     "GET_USER_NAME_FUNCTION": "django_messaging.defaults.get_user_name",
     "GET_USER_AVATAR_URL_FUNCTION": "django_messaging.defaults.get_user_avatar_url",
+
+    # Authentication
+    "LOGIN_URL": "login",
 }
 ```
 

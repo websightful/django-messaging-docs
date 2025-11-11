@@ -191,6 +191,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#authentication-settings" class="nav-link">Authentication Settings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-bs-level="2"><a href="#next-steps" class="nav-link">Next Steps</a>
               <ul class="nav flex-column">
               </ul>
@@ -479,8 +483,27 @@
 <a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>    <span class="s2">&quot;GET_CONTACT_LIST_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_contact_list&quot;</span><span class="p">,</span>
 <a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>    <span class="s2">&quot;GET_USER_NAME_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_user_name&quot;</span><span class="p">,</span>
 <a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>    <span class="s2">&quot;GET_USER_AVATAR_URL_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_user_avatar_url&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a><span class="p">}</span>
+<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>
+<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>    <span class="c1"># Authentication</span>
+<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>    <span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a><span class="p">}</span>
 </code></pre></div>
+<h2 id="authentication-settings">Authentication Settings<a class="headerlink" href="#authentication-settings" title="Permanent link">&para;</a></h2>
+<h3 id="login_url">LOGIN_URL<a class="headerlink" href="#login_url" title="Permanent link">&para;</a></h3>
+<p>URL to redirect unauthenticated users when they encounter chat widgets.</p>
+<ul>
+<li><strong>Type</strong>: <code>str</code> (URL name, path, or full URL)</li>
+<li><strong>Default</strong>: <code>"login"</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>  <span class="c1"># URL name (default)</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="c1"># or</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;/accounts/login/&quot;</span><span class="p">,</span>  <span class="c1"># Path</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="c1"># or</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    <span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/login/&quot;</span><span class="p">,</span>  <span class="c1"># Full URL</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="p">}</span>
+</code></pre></div>
+<p>When unauthenticated users see embedded chat widgets (DM widget or room chat), they'll see a login link instead of the chat interface. The link includes a <code>?next=</code> parameter to redirect them back after login.</p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Learn about <a href="../../guides/websocket-setup/">WebSocket Setup</a> for real-time messaging</li>

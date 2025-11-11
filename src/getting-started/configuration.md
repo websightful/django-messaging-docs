@@ -364,8 +364,32 @@ DJANGO_MESSAGING = {
     "GET_CONTACT_LIST_FUNCTION": "django_messaging.defaults.get_contact_list",
     "GET_USER_NAME_FUNCTION": "django_messaging.defaults.get_user_name",
     "GET_USER_AVATAR_URL_FUNCTION": "django_messaging.defaults.get_user_avatar_url",
+
+    # Authentication
+    "LOGIN_URL": "login",
 }
 ```
+
+## Authentication Settings
+
+### LOGIN_URL
+
+URL to redirect unauthenticated users when they encounter chat widgets.
+
+- **Type**: `str` (URL name, path, or full URL)
+- **Default**: `"login"`
+
+```python
+DJANGO_MESSAGING = {
+    "LOGIN_URL": "login",  # URL name (default)
+    # or
+    "LOGIN_URL": "/accounts/login/",  # Path
+    # or
+    "LOGIN_URL": "https://example.com/login/",  # Full URL
+}
+```
+
+When unauthenticated users see embedded chat widgets (DM widget or room chat), they'll see a login link instead of the chat interface. The link includes a `?next=` parameter to redirect them back after login.
 
 ## Next Steps
 

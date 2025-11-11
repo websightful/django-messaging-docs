@@ -7,7 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v0.19.2] - 2025-11-10
+## [v0.20.0] - 2025-11-11
+
+### Added
+
+- Login URL setting to use for DM and Room widgets.
+
+## [v0.19.2] - 2025-11-11
+
+### Fixed
+
+- Layout issues for non-authenticated visitors fixed.
+- Non-authenticated visitors get linked to the login page with a `?next=` parameter to return to the current page after login.
+
+## [v0.19.1] - 2025-11-10
 
 ### Fixed
 
@@ -32,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Responsive layout with tabs on mobile for the messages view: chat list and message list.
 
-## [v0.19.2] - 2025-11-01
+## [v0.17.0] - 2025-11-01
 
 ### Fixed
 

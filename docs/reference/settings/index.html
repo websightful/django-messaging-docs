@@ -437,54 +437,89 @@
 <a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>    <span class="k">return</span> <span class="s2">&quot;data:image/svg+xml,...&quot;</span>
 </code></pre></div>
 <p><strong>Default behavior</strong>: Generates an SVG data URL with user initials and a consistent color based on the user's ID.</p>
+<h3 id="login_url">LOGIN_URL<a class="headerlink" href="#login_url" title="Permanent link">&para;</a></h3>
+<p><strong>Type</strong>: <code>str</code> (URL name, path, or full URL)
+<strong>Default</strong>: <code>"login"</code></p>
+<p>URL to redirect unauthenticated users to when they try to access chat features in embedded widgets (DM widget and room chat).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>  <span class="c1"># URL name</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="c1"># or</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;/accounts/login/&quot;</span><span class="p">,</span>  <span class="c1"># Path</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="c1"># or</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/login/&quot;</span><span class="p">,</span>  <span class="c1"># Full URL</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="p">}</span>
+</code></pre></div>
+<p>The setting accepts three formats:</p>
+<ol>
+<li>
+<p><strong>URL name</strong> (default): A Django URL name that will be resolved using <code>reverse()</code>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;login&quot;</span>  <span class="c1"># Resolves to the URL named &#39;login&#39;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Path</strong>: A URL path starting with <code>/</code>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;/accounts/login/&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Full URL</strong>: A complete URL starting with <code>http://</code> or <code>https://</code>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/login/&quot;</span>
+</code></pre></div></p>
+</li>
+</ol>
+<p><strong>Usage</strong>: When an unauthenticated user encounters a chat widget (DM or room), they will see a login link instead of the chat interface. Clicking the link redirects them to the configured login URL with a <code>?next=</code> parameter to return them to the current page after login.</p>
+<p><strong>Note</strong>: This setting is resolved at template render time and made available in templates via <code>MESSAGING_SETTINGS.LOGIN_URL</code>.</p>
 <h2 id="complete-example">Complete Example<a class="headerlink" href="#complete-example" title="Permanent link">&para;</a></h2>
 <p>Here's a complete configuration example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="c1"># Transport</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="s2">&quot;TRANSPORT&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="c1"># Pagination</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="s2">&quot;MESSAGES_PER_PAGE&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="s2">&quot;CHATS_PER_PAGE&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="c1"># Layout</span>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>    <span class="s2">&quot;TOP_NAVIGATION_HEIGHT&quot;</span><span class="p">:</span> <span class="s2">&quot;64px&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    <span class="s2">&quot;CONTENT_TOP_OFFSET&quot;</span><span class="p">:</span> <span class="s2">&quot;96px&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>    <span class="s2">&quot;CONTENT_BOTTOM_OFFSET&quot;</span><span class="p">:</span> <span class="s2">&quot;32px&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>
-<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    <span class="c1"># Features</span>
-<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    <span class="s2">&quot;SHOW_DELETED_MESSAGE_INDICATORS&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>    <span class="s2">&quot;ENABLE_CHAT_ROOMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>    <span class="s2">&quot;ENABLE_DMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>    <span class="s2">&quot;SHOW_CHAT_ROOMS_IN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>    <span class="s2">&quot;SHOW_DMS_IN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>
-<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>    <span class="c1"># Permissions</span>
-<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>    <span class="s2">&quot;ALLOW_RENAMING_CHAT_ROOMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>    <span class="s2">&quot;ALLOW_RENAMING_DMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>    <span class="s2">&quot;ALLOW_EDITING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>    <span class="s2">&quot;ALLOW_DELETING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>    <span class="s2">&quot;ALLOW_ADDING_REACTIONS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>
-<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>    <span class="c1"># Customization</span>
-<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>    <span class="s2">&quot;GET_CONTACT_LIST_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_contact_list&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>    <span class="s2">&quot;GET_USER_NAME_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_user_name&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>    <span class="s2">&quot;GET_USER_AVATAR_URL_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_user_avatar_url&quot;</span><span class="p">,</span>
-<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">DJANGO_MESSAGING</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="c1"># Transport</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="s2">&quot;TRANSPORT&quot;</span><span class="p">:</span> <span class="s2">&quot;websocket&quot;</span><span class="p">,</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="c1"># Pagination</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>    <span class="s2">&quot;MESSAGES_PER_PAGE&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>    <span class="s2">&quot;CHATS_PER_PAGE&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>    <span class="c1"># Layout</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="s2">&quot;TOP_NAVIGATION_HEIGHT&quot;</span><span class="p">:</span> <span class="s2">&quot;64px&quot;</span><span class="p">,</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>    <span class="s2">&quot;CONTENT_TOP_OFFSET&quot;</span><span class="p">:</span> <span class="s2">&quot;96px&quot;</span><span class="p">,</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>    <span class="s2">&quot;CONTENT_BOTTOM_OFFSET&quot;</span><span class="p">:</span> <span class="s2">&quot;32px&quot;</span><span class="p">,</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>    <span class="c1"># Features</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>    <span class="s2">&quot;SHOW_DELETED_MESSAGE_INDICATORS&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>    <span class="s2">&quot;ENABLE_CHAT_ROOMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a>    <span class="s2">&quot;ENABLE_DMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>    <span class="s2">&quot;SHOW_CHAT_ROOMS_IN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>    <span class="s2">&quot;SHOW_DMS_IN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a>    <span class="c1"># Permissions</span>
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a>    <span class="s2">&quot;ALLOW_RENAMING_CHAT_ROOMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>    <span class="s2">&quot;ALLOW_RENAMING_DMS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a>    <span class="s2">&quot;ALLOW_EDITING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a>    <span class="s2">&quot;ALLOW_DELETING_OWN_MESSAGES&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a>    <span class="s2">&quot;ALLOW_ADDING_REACTIONS&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a>
+<a id="__codelineno-27-28" name="__codelineno-27-28" href="#__codelineno-27-28"></a>    <span class="c1"># Customization</span>
+<a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a>    <span class="s2">&quot;GET_CONTACT_LIST_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_contact_list&quot;</span><span class="p">,</span>
+<a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a>    <span class="s2">&quot;GET_USER_NAME_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_user_name&quot;</span><span class="p">,</span>
+<a id="__codelineno-27-31" name="__codelineno-27-31" href="#__codelineno-27-31"></a>    <span class="s2">&quot;GET_USER_AVATAR_URL_FUNCTION&quot;</span><span class="p">:</span> <span class="s2">&quot;django_messaging.defaults.get_user_avatar_url&quot;</span><span class="p">,</span>
+<a id="__codelineno-27-32" name="__codelineno-27-32" href="#__codelineno-27-32"></a>
+<a id="__codelineno-27-33" name="__codelineno-27-33" href="#__codelineno-27-33"></a>    <span class="c1"># Authentication</span>
+<a id="__codelineno-27-34" name="__codelineno-27-34" href="#__codelineno-27-34"></a>    <span class="s2">&quot;LOGIN_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+<a id="__codelineno-27-35" name="__codelineno-27-35" href="#__codelineno-27-35"></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="context-processor">Context Processor<a class="headerlink" href="#context-processor" title="Permanent link">&para;</a></h2>
 <p>Don't forget to add the context processor to make settings available in templates:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="p">{</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>        <span class="s2">&quot;BACKEND&quot;</span><span class="p">:</span> <span class="s2">&quot;django.template.backends.django.DjangoTemplates&quot;</span><span class="p">,</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>        <span class="s2">&quot;OPTIONS&quot;</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>            <span class="s2">&quot;context_processors&quot;</span><span class="p">:</span> <span class="p">[</span>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>                <span class="c1"># ...</span>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>                <span class="s2">&quot;django_messaging.context_processors.messaging_settings&quot;</span><span class="p">,</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>            <span class="p">],</span>
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>        <span class="p">},</span>
-<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>    <span class="p">},</span>
-<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="p">{</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>        <span class="s2">&quot;BACKEND&quot;</span><span class="p">:</span> <span class="s2">&quot;django.template.backends.django.DjangoTemplates&quot;</span><span class="p">,</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>        <span class="s2">&quot;OPTIONS&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>            <span class="s2">&quot;context_processors&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>                <span class="c1"># ...</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>                <span class="s2">&quot;django_messaging.context_processors.messaging_settings&quot;</span><span class="p">,</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>            <span class="p">],</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>        <span class="p">},</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>    <span class="p">},</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="p">]</span>
 </code></pre></div>
 <p>This makes <code>MESSAGING_SETTINGS</code> available in all templates.</p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
