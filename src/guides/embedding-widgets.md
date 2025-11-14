@@ -63,6 +63,7 @@ The DM widget:
 2. Displays the chat interface inline
 3. Allows sending and receiving messages
 4. Updates in real-time (with WebSocket) or periodically (with polling)
+5. Can be closed and reopened using the toggle button - closing the widget disconnects the real-time connection
 
 ### Use Cases
 
