@@ -7,13 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v0.21.0] - 2025-11-14
+## [v0.21.1] - 2025-11-15
+
+### Fixed
+
+- Websocket usage on remote servers.
+
+## [v0.21.1] - 2025-11-14
 
 ### Changed
 
 - DM widget now only supports close/reopen functionality. The minimize button has been removed for a simpler user experience.
 
-## [v0.21.0] - 2025-11-11
+## [v0.20.0] - 2025-11-11
 
 ### Added
 
