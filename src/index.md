@@ -44,18 +44,18 @@ Django Messaging is a comprehensive messaging solution for Django applications t
 
 ## Compatibility
 
-| Feature                          | Value                                         |
-|----------------------------------|-----------------------------------------------|
+| Feature                          | Value                                          |
+|----------------------------------|------------------------------------------------|
 | Supported modern browsers        | Chrome, Firefox, Safari, Opera, Microsoft Edge |
-| Supported Django versions        | 4.2, 5.0, 5.1, 5.2                            |
-| Supported Python versions        | 3.8, 3.9, 3.10, 3.11, 3.12, 3.13, 3.14        |
-| Multiple interfaces              | Direct Messages, Chat Rooms, Messages View    |
-| Real-time communication          | WebSocket (ASGI) & Polling (WSGI/ASGI)        |
-| Responsive and accessible layout | ✔︎                                            |
-| Translatable                     | ✔︎                                            |
-| Configurable                     | ✔︎                                            |
-| Unlimited websites               | ✔︎                                            |
-| Latest package version           | 0.21.1                                        |
+| Supported Django versions        | 4.2, 5.0, 5.1, 5.2, 6.0                        |
+| Supported Python versions        | 3.10, 3.11, 3.12, 3.13, 3.14                   |
+| Multiple interfaces              | Direct Messages, Chat Rooms, Messages View     |
+| Real-time communication          | WebSocket (ASGI) & Polling (WSGI/ASGI)         |
+| Responsive and accessible layout | ✔︎                                             |
+| Translatable                     | ✔︎                                             |
+| Configurable                     | ✔︎                                             |
+| Unlimited websites               | ✔︎                                             |
+| Latest package version           | 0.22.4                                         |
 
 ## Benefits
 
@@ -101,7 +101,7 @@ Want to see it in action first? Try the [demo project](https://github.com/websig
 
 ## Support
 
-For technical questions, feature requests, or bug reports, please contact Aidas Bendoraitis at <https://www.djangotricks.com/feedback/>.
+For technical questions, feature requests, or bug reports, please send them to info@websightful.co.
 
 ## License
 

@@ -7,13 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.22.4] - 2026-05-09
+
+### Fixed
+
+- Setup script fixed.
+- Polling transport now correctly applies both reaction and content updates when both change within the same polling interval.
+
+## [v0.22.0] - 2026-04-26
+
+### Added
+
+- Support for Django 6.0
+- Verbose name for the app added.
+
+### Changed
+
+- Package structure modernized.
+
+### Removed
+
+- Dropped support for Python 3.7, 3.8, and 3.9
+
 ## [v0.21.1] - 2025-11-15
 
 ### Fixed
 
 - Websocket usage on remote servers.
 
-## [v0.21.1] - 2025-11-14
+## [v0.21.0] - 2025-11-14
 
 ### Changed
 

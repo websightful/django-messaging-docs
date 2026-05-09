@@ -22,7 +22,7 @@ Yes! There are no domain limitations. You can use Django Messaging on as many we
 
 ### What are the requirements?
 
-- Python 3.8 or higher
+- Python 3.10 or higher
 - Django 4.2 or higher
 - Django REST Framework
 
@@ -306,7 +306,7 @@ Yes, custom development services may be available. Contact the developer to disc
 ### How do I upgrade to a new version?
 
 1. Download the new wheel file
-2. Install it: `pip install django_messaging-0.21.1-py3-none-any.whl --upgrade`
+2. Install it: `pip install django_messaging-0.22.4-py3-none-any.whl --upgrade`
 3. Run migrations: `python manage.py migrate`
 4. Collect static files: `python manage.py collectstatic`
 5. Restart your server
